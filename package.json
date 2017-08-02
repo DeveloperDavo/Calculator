@@ -1,0 +1,6 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "JavaScript calculator",
+  "scripts": { "test": "jasmine" }
+}
