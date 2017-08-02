@@ -6,8 +6,8 @@ describe("application", function () {
     beforeEach(function () {
         container = fixture(
             '<div id="display">sample html</div>' +
-            '<button class="number" id="3" value="3">3</button>' +
-            '<button class="number" id="9" value="9">9</button>'
+            '<button class="number" id="3">3</button>' +
+            '<button class="number" id="9">9</button>'
         );
         document.body.appendChild(container);
         application = new Application(document);
