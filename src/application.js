@@ -5,15 +5,17 @@ var convertNodeListToArray = function (nodeList) {
 };
 
 function Application() {
+    var setDisplayValue = function (value) {
+        return function () {
+            document.getElementById('display').innerHTML = value;
+        }
+
+    };
     this.init = function () {
         var numberElementsArray = convertNodeListToArray(document.getElementsByClassName('number'));
 
         numberElementsArray.forEach(function (numberElement) {
-            numberElement.onclick = (function (value) {
-                return function () {
-                    document.getElementById('display').innerHTML = value;
-                }
-            })(numberElement.innerHTML);
+            numberElement.onclick = setDisplayValue(numberElement.innerHTML);
         });
     };
 
