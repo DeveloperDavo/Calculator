@@ -11,11 +11,14 @@ function Application() {
         }
 
     };
+    var setDisplayValueOnClick = function (numberElement) {
+        numberElement.onclick = setDisplayValue(numberElement.innerHTML);
+    };
     this.init = function () {
         var numberElementsArray = convertNodeListToArray(document.getElementsByClassName('number'));
 
         numberElementsArray.forEach(function (numberElement) {
-            numberElement.onclick = setDisplayValue(numberElement.innerHTML);
+            setDisplayValueOnClick(numberElement);
         });
     };
 
