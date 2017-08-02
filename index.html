@@ -8,24 +8,31 @@
 <div id="display"></div>
 <div id="buttons">
     <div>
-        <button type="button">7</button>
-        <button type="button">8</button>
-        <button type="button">9</button>
+        <button class="number" type="button">7</button>
+        <button class="number" type="button">8</button>
+        <button class="number" type="button">9</button>
     </div>
     <div>
-        <button type="button">4</button>
-        <button type="button">5</button>
-        <button type="button">6</button>
+        <button class="number" type="button">4</button>
+        <button class="number" type="button">5</button>
+        <button class="number" type="button">6</button>
     </div>
     <div>
-        <button type="button">1</button>
-        <button type="button">2</button>
-        <button type="button">3</button>
+        <button class="number" type="button">1</button>
+        <button class="number" type="button">2</button>
+        <button class="number" id="3" type="button" value="3">3</button>
     </div>
     <div>
-        <button type="button">0</button>
+        <button class="number" type="button">0</button>
     </div>
 </div>
+
+<script>
+    window.onload = function () {
+        new Application().init();
+    };
+</script>
+<script src="src/application.js"></script>
 
 </body>
 </html>

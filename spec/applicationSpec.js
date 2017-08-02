@@ -5,18 +5,24 @@ describe("application", function () {
 
     beforeEach(function () {
         container = fixture(
-            '<div id="display">sample html</div>'
+            '<div id="display">sample html</div>' +
+            '<button id="3"></button>'
         );
         document.body.appendChild(container);
+        application = new Application(document);
     });
 
     afterEach(function () {
         document.body.removeChild(container);
     });
 
-    it('should display sample html', function () {
-        expect(document.getElementById('display').textContent).toEqual('sample html');
+    it('should display value of button', function () {
+        application.init();
+
+        document.getElementById('3').click();
+        expect(document.getElementById('display').textContent).toEqual('3');
     });
+
 
 });
 
