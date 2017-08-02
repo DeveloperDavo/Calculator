@@ -1,7 +1,7 @@
 'use strict';
 
-var convertNodeListToArray = function (nodeListElements) {
-    return Array.prototype.slice.call(nodeListElements);
+var convertNodeListToArray = function (nodeList) {
+    return Array.prototype.slice.call(nodeList);
 };
 
 function Application() {
