@@ -9,17 +9,15 @@ function Application() {
         return function () {
             document.getElementById('display').innerHTML = value;
         }
-
     };
+
     var setDisplayValueOnClick = function (numberElement) {
         numberElement.onclick = setDisplayValue(numberElement.innerHTML);
     };
+
     this.init = function () {
         var numberElementsArray = convertNodeListToArray(document.getElementsByClassName('number'));
-
-        numberElementsArray.forEach(function (numberElement) {
-            setDisplayValueOnClick(numberElement);
-        });
+        numberElementsArray.forEach(setDisplayValueOnClick);
     };
 
 }
