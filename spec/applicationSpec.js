@@ -138,6 +138,14 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toEqual('7');
     });
 
+    it('should display nothing if addition is clicked first', function () {
+        application.init();
+
+        document.getElementById('+').click();
+
+        expect(document.getElementById('display').textContent).toEqual('');
+    });
+
 });
 
 function fixture(html) {

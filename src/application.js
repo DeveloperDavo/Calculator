@@ -27,8 +27,10 @@ function Application() {
         return function () {
             equation.push(currentNumberInput);
             equation.push(operation);
-            currentNumberInput = "";
-            document.getElementById('display').innerHTML = operation;
+            if (currentNumberInput.length !== 0) {
+                currentNumberInput = "";
+                document.getElementById('display').innerHTML = operation;
+            }
         }
     };
 
@@ -66,6 +68,7 @@ function Application() {
     };
 
     this.init = function () {
+        document.getElementById('display').innerHTML = "";
         displayEachNumberOnClick();
         displayEachOperationOnClick();
         displayResultOnClick();
