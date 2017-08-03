@@ -7,6 +7,7 @@ describe("application", function () {
         container = fixture(
             '<div id="display">sample html</div>' +
             '<button id="all-clear">AC</button>' +
+            '<button id="clear-entry">CE</button>' +
             '<button class="operation" id="/">/</button>' +
             '<button class="operation" id="*">*</button>' +
             '<button class="number" id="7">7</button>' +
@@ -225,8 +226,25 @@ describe("application", function () {
         document.getElementById('/').click();
         document.getElementById('3').click();
         document.getElementById('equals').click();
-        
+
         expect(document.getElementById('display').textContent).toBeCloseTo('0.67', 2);
+    });
+
+    it('should clear operation entry', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('/').click();
+        document.getElementById('clear-entry').click();
+
+        expect(document.getElementById('display').textContent).toBe('');
+
+        document.getElementById('-').click();
+        document.getElementById('3').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('display').textContent).toBe('-1');
+
     });
 
 });

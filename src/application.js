@@ -33,6 +33,8 @@ function Application() {
                 result += Number(equation[i + 1]);
             } else if (equation[i] === "-") {
                 result -= Number(equation[i + 1]);
+            } else {
+                console.log("shouldn't be here")
             }
         }
         return result;
@@ -59,7 +61,9 @@ function Application() {
     // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
     var displayOperation = function (operation) {
         return function () {
-            equation.push(currentNumberInput);
+            if (currentNumberInput.length !== 0) {
+                equation.push(currentNumberInput);
+            }
             equation.push(operation);
             if (currentNumberInput.length !== 0) {
                 currentNumberInput = "";
@@ -99,7 +103,14 @@ function Application() {
         };
     };
 
-    var clearResultOnClick = function () {
+    var clearEntryOnClick = function () {
+        document.getElementById('clear-entry').onclick = function () {
+            equation.splice(equation.length - 1);
+            document.getElementById('display').innerHTML = currentNumberInput;
+        };
+    };
+
+    var clearAllOnClick = function () {
         document.getElementById('all-clear').onclick = function () {
             currentNumberInput = "";
             equation = [];
@@ -112,6 +123,7 @@ function Application() {
         displayEachNumberOnClick();
         displayEachOperationOnClick();
         displayResultOnClick();
-        clearResultOnClick();
+        clearEntryOnClick();
+        clearAllOnClick();
     };
 }
