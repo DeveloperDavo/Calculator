@@ -14,6 +14,9 @@ function Application() {
     var equation = [];
     var clickedOnEquals = false;
 
+    /**
+     * eg. Replaces [2, *, 3, +, 4] with [3, +, 4]
+     */
     var squashMultiplicationsAndDivisions = function () {
         for (var i = 0; i < equation.length; i++) {
             if (equation[i] === "*") {
@@ -26,6 +29,9 @@ function Application() {
         }
     };
 
+    /**
+     *  eg. The result from [2, +, 4, -, 1] is 1
+     */
     var addAndSubtractResultFromEquation = function () {
         var result = Number(equation[0]);
         for (var i = 1; i < equation.length; i += 2) {
@@ -50,9 +56,11 @@ function Application() {
     var displayCurrentNumber = function (number) {
         return function () {
             if (clickedOnEquals) {
+                // Don't append to existing number as this should be the previous result
                 currentNumberInput = number;
                 clickedOnEquals = false;
             } else {
+                // Append to existing number
                 currentNumberInput += number;
             }
             document.getElementById('display').innerHTML = currentNumberInput;
@@ -63,13 +71,15 @@ function Application() {
     var displayOperation = function (operation) {
         return function () {
             if (currentNumberInput.length !== 0) {
+                // only push to equation if there is number to push.
                 equation.push(currentNumberInput);
-            }
-            equation.push(operation);
-            if (currentNumberInput.length !== 0) {
+
                 currentNumberInput = "";
+
+                // only display operation if there is number beforehand
                 document.getElementById('display').innerHTML = operation;
             }
+            equation.push(operation);
         }
     };
 
@@ -95,6 +105,7 @@ function Application() {
         var equalsElement = document.getElementById('equals');
         equalsElement.onclick = function () {
             equation.push(currentNumberInput);
+
             currentNumberInput = calculateResultFromEquation().toString();
 
             document.getElementById('display').innerHTML = currentNumberInput;
@@ -107,11 +118,13 @@ function Application() {
     var clearEntryOnClick = function () {
         document.getElementById('clear-entry').onclick = function () {
             if (currentNumberInput.length !== 0) {
+                // entry is a number, so it has not yet been pushed to the equation array.
                 currentNumberInput = "";
             } else {
+                // entry is an operation, so remove it from the equation array.
                 equation.splice(equation.length - 1);
             }
-            document.getElementById('display').innerHTML = currentNumberInput;
+            document.getElementById('display').innerHTML = "";
         };
     };
 
