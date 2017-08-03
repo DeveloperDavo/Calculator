@@ -8,31 +8,31 @@ function Application() {
     var currentNumberInput = "";
 
     // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
-    var setDisplayValue = function (value) {
+    var setDisplayNumber = function (number) {
         return function () {
-            currentNumberInput += value;
+            currentNumberInput += number;
             document.getElementById('display').innerHTML = currentNumberInput;
         }
     };
 
     // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
-    var setOperationDisplayValue = function (value) {
+    var setDisplayOperation = function (operation) {
         return function () {
-            document.getElementById('display').innerHTML = value;
+            document.getElementById('display').innerHTML = operation;
         }
     };
 
-    var setDisplayValueOnClick = function (numberElement) {
-        numberElement.onclick = setDisplayValue(numberElement.innerHTML);
+    var setDisplayNumberOnClick = function (numberElement) {
+        numberElement.onclick = setDisplayNumber(numberElement.innerHTML);
     };
 
     var setDisplayOperationOnClick = function (numberElement) {
-        numberElement.onclick = setOperationDisplayValue(numberElement.innerHTML);
+        numberElement.onclick = setDisplayOperation(numberElement.innerHTML);
     };
 
     var displayEachNumberOnClick = function () {
         var numberElementsArray = convertNodeListToArray(document.getElementsByClassName('number'));
-        numberElementsArray.forEach(setDisplayValueOnClick);
+        numberElementsArray.forEach(setDisplayNumberOnClick);
     };
 
     var displayEachOperationOnClick = function () {
