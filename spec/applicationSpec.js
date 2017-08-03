@@ -58,7 +58,7 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toEqual('+');
     });
 
-    it('should display current number after + operation', function () {
+    it('should display current number after addition operation', function () {
         application.init();
 
         document.getElementById('2').click();
@@ -79,6 +79,18 @@ describe("application", function () {
         document.getElementById('equals').click();
 
         expect(document.getElementById('display').textContent).toEqual('30');
+    });
+
+    it('should display current number after equals operation', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('+').click();
+        document.getElementById('4').click();
+        document.getElementById('equals').click();
+        document.getElementById('1').click();
+
+        expect(document.getElementById('display').textContent).toEqual('1');
     });
 
 });

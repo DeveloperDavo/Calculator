@@ -48,6 +48,7 @@ function Application() {
         var equalsElement = document.getElementById('equals');
         equalsElement.onclick = function () {
             equation.push(currentNumberInput);
+            currentNumberInput = "";
             var result = Number(equation[0]) + Number(equation[2]);
             document.getElementById('display').innerHTML = result.toString();
         };
