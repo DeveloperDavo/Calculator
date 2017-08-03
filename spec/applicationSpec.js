@@ -20,6 +20,7 @@ describe("application", function () {
             '<button class="number" id="2">2</button>' +
             '<button class="number" id="3">3</button>' +
             '<button class="number" id="0">0</button>' +
+            '<button class="number" id="decimal">.</button>' +
             '<button class="operation" id="equals">=</button>'
         );
         document.body.appendChild(container);
@@ -186,6 +187,16 @@ describe("application", function () {
 
         document.getElementById('-').click();
         expect(document.getElementById('display').textContent).toEqual('');
+    });
+
+    it('should display decimal number', function () {
+        application.init();
+
+        document.getElementById('0').click();
+        document.getElementById('decimal').click();
+        document.getElementById('3').click();
+
+        expect(document.getElementById('display').textContent).toEqual('0.3');
     });
 
 
