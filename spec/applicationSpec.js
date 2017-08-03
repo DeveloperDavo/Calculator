@@ -11,6 +11,7 @@ describe("application", function () {
             '<button class="number" id="9">9</button>' +
             '<button class="number" id="4">4</button>' +
             '<button class="number" id="5">5</button>' +
+            '<button class="number" id="6">6</button>' +
             '<button class="operation" id="+">+</button>' +
             '<button class="number" id="1">1</button>' +
             '<button class="number" id="2">2</button>' +
@@ -81,7 +82,22 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toEqual('30');
     });
 
-    it('should display current number after equals operation', function () {
+    it('should display result of adding three or more numbers', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('0').click();
+        document.getElementById('+').click();
+        document.getElementById('1').click();
+        document.getElementById('0').click();
+        document.getElementById('+').click();
+        document.getElementById('6').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('display').textContent).toEqual('36');
+    });
+
+    it('should display number after equals operation', function () {
         application.init();
 
         document.getElementById('2').click();
@@ -107,7 +123,6 @@ describe("application", function () {
 
         expect(document.getElementById('display').textContent).toEqual('2');
     });
-
 
 });
 

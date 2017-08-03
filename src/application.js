@@ -49,7 +49,10 @@ function Application() {
         equalsElement.onclick = function () {
             equation.push(currentNumberInput);
             currentNumberInput = "";
-            var result = Number(equation[0]) + Number(equation[2]);
+            var result = 0;
+            for (var i = 0; i < equation.length; i = i + 2) {
+                result += Number(equation[i]);
+            }
             equation = [];
             document.getElementById('display').innerHTML = result.toString();
         };
