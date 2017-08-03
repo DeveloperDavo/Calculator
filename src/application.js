@@ -7,11 +7,17 @@ var convertNodeListToArray = function (nodeList) {
 function Application() {
     var currentNumberInput = "";
     var equation = [];
+    var clickedOnEquals = false;
 
     // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
     var setDisplayNumber = function (number) {
         return function () {
-            currentNumberInput += number;
+            if (clickedOnEquals) {
+                currentNumberInput = number;
+                clickedOnEquals = false;
+            } else {
+                currentNumberInput += number;
+            }
             document.getElementById('display').innerHTML = currentNumberInput;
         }
     };
@@ -47,14 +53,15 @@ function Application() {
     var displayResultOnClick = function () {
         var equalsElement = document.getElementById('equals');
         equalsElement.onclick = function () {
+            clickedOnEquals = true;
             equation.push(currentNumberInput);
-            currentNumberInput = "";
             var result = 0;
             for (var i = 0; i < equation.length; i = i + 2) {
                 result += Number(equation[i]);
             }
+            currentNumberInput = result.toString();
             equation = [];
-            document.getElementById('display').innerHTML = result.toString();
+            document.getElementById('display').innerHTML = currentNumberInput;
         };
     };
 
