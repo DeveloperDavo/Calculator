@@ -5,10 +5,13 @@ var convertNodeListToArray = function (nodeList) {
 };
 
 function Application() {
+    var currentNumberInput = "";
+
     // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
     var setDisplayValue = function (value) {
         return function () {
-            document.getElementById('display').innerHTML = value;
+            currentNumberInput += value;
+            document.getElementById('display').innerHTML = currentNumberInput;
         }
     };
 
@@ -20,8 +23,8 @@ function Application() {
         var numberElementsArray = convertNodeListToArray(document.getElementsByClassName('number'));
         numberElementsArray.forEach(setDisplayValueOnClick);
     };
+
     this.init = function () {
         displayEachNumberOnClick();
     };
-
 }
