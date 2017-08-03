@@ -226,7 +226,7 @@ describe("application", function () {
         document.getElementById('3').click();
         document.getElementById('all-clear').click();
 
-        expect(document.getElementById('display').textContent).toBe('');
+        expect(document.getElementById('display').textContent).toBe('0');
 
         document.getElementById('2').click();
         document.getElementById('/').click();
@@ -243,7 +243,7 @@ describe("application", function () {
         document.getElementById('/').click();
         document.getElementById('clear-entry').click();
 
-        expect(document.getElementById('display').textContent).toBe('');
+        expect(document.getElementById('display').textContent).toBe('0');
 
         document.getElementById('-').click();
         document.getElementById('3').click();
@@ -261,7 +261,7 @@ describe("application", function () {
         document.getElementById('3').click();
         document.getElementById('clear-entry').click();
 
-        expect(document.getElementById('display').textContent).toBe('');
+        expect(document.getElementById('display').textContent).toBe('0');
 
         document.getElementById('4').click();
         document.getElementById('equals').click();

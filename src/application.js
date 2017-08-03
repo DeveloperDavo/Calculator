@@ -14,10 +14,15 @@ function Application() {
     var equation = [];
     var clickedOnEquals = false;
 
+    var initialiseDisplay = function () {
+        document.getElementById('display').innerHTML = "0";
+    };
+
     var tearDown = function () {
         currentNumberInput = "";
         equation = [];
         clickedOnEquals = false;
+        initialiseDisplay();
     };
 
     var throwAndDisplayError = function () {
@@ -136,19 +141,18 @@ function Application() {
                 // entry is an operation, so remove it from the equation array.
                 equation.splice(equation.length - 1);
             }
-            document.getElementById('display').innerHTML = "";
+            initialiseDisplay();
         };
     };
 
     var clearAllOnClick = function () {
         document.getElementById('all-clear').onclick = function () {
             tearDown();
-            document.getElementById('display').innerHTML = currentNumberInput;
         };
     };
 
     this.init = function () {
-        document.getElementById('display').innerHTML = "0";
+        initialiseDisplay();
         displayEachNumberOnClick();
         displayEachOperationOnClick();
         displayResultOnClick();
