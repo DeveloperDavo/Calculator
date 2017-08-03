@@ -4,32 +4,43 @@ var convertNodeListToArray = function (nodeList) {
     return Array.prototype.slice.call(nodeList);
 };
 
+var spliceAroundIndex = function (array, index) {
+    array.splice(index + 1, 1);
+    array.splice(index - 1, 1);
+};
+
 function Application() {
     var currentNumberInput = "";
     var equation = [];
     var clickedOnEquals = false;
 
-    var calculateResultFromEquation = function () {
+    var squashMultiplicationsAndDivisions = function () {
         for (var i = 0; i < equation.length; i++) {
             if (equation[i] === "*") {
                 equation[i] = Number(equation[i - 1]) * Number(equation[i + 1]);
-                equation.splice(i + 1, 1);
-                equation.splice(i - 1, 1);
+                spliceAroundIndex(equation, i);
             } else if (equation[i] === "/") {
                 equation[i] = Number(equation[i - 1]) / Number(equation[i + 1]);
-                equation.splice(i + 1, 1);
-                equation.splice(i - 1, 1);
+                spliceAroundIndex(equation, i);
             }
         }
+    };
+
+    var addAndSubtractResultFromEquation = function () {
         var result = Number(equation[0]);
-        for (var j = 1; j < equation.length; j += 2) {
-            if (equation[j] === "+") {
-                result += Number(equation[j + 1]);
-            } else {
-                result -= Number(equation[j + 1]);
+        for (var i = 1; i < equation.length; i += 2) {
+            if (equation[i] === "+") {
+                result += Number(equation[i + 1]);
+            } else if (equation[i] === "-") {
+                result -= Number(equation[i + 1]);
             }
         }
         return result;
+    };
+
+    var calculateResultFromEquation = function () {
+        squashMultiplicationsAndDivisions();
+        return addAndSubtractResultFromEquation();
     };
 
     // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
