@@ -14,6 +14,11 @@ function Application() {
     var equation = [];
     var clickedOnEquals = false;
 
+    var throwAndDisplayError = function () {
+        document.getElementById('display').innerHTML = "Error";
+        throw "equation array has been compromised: [" + equation + "]";
+    };
+
     /**
      * eg. Replaces [2, *, 3, +, 4] with [3, +, 4]
      */
@@ -40,8 +45,7 @@ function Application() {
             } else if (equation[i] === "-") {
                 result -= Number(equation[i + 1]);
             } else {
-                console.log(equation);
-                console.log("shouldn't be here")
+                throwAndDisplayError();
             }
         }
         return result;
