@@ -18,6 +18,7 @@ function Application() {
     // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
     var setDisplayOperation = function (operation) {
         return function () {
+            currentNumberInput = "";
             document.getElementById('display').innerHTML = operation;
         }
     };

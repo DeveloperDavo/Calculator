@@ -9,8 +9,10 @@ describe("application", function () {
             '<button class="number" id="7">7</button>' +
             '<button class="number" id="8">8</button>' +
             '<button class="number" id="9">9</button>' +
+            '<button class="number" id="4">4</button>' +
             '<button class="number" id="5">5</button>' +
             '<button class="operation" id="+">+</button>' +
+            '<button class="number" id="2">2</button>' +
             '<button class="number" id="3">3</button>'
         );
         document.body.appendChild(container);
@@ -51,6 +53,16 @@ describe("application", function () {
         document.getElementById('+').click();
 
         expect(document.getElementById('display').textContent).toEqual('+');
+    });
+
+    it('should display current number after + operation', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('+').click();
+        document.getElementById('4').click();
+
+        expect(document.getElementById('display').textContent).toEqual('4');
     });
 
 });
