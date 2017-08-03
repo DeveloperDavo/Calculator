@@ -14,9 +14,17 @@ function Application() {
     var equation = [];
     var clickedOnEquals = false;
 
+    var tearDown = function () {
+        currentNumberInput = "";
+        equation = [];
+        clickedOnEquals = false;
+    };
+
     var throwAndDisplayError = function () {
         document.getElementById('display').innerHTML = "Error";
-        throw "equation array has been compromised: [" + equation + "]";
+        var temp = equation;
+        tearDown();
+        throw "equation array has been compromised: [" + temp + "]";
     };
 
     /**
@@ -134,8 +142,7 @@ function Application() {
 
     var clearAllOnClick = function () {
         document.getElementById('all-clear').onclick = function () {
-            currentNumberInput = "";
-            equation = [];
+            tearDown();
             document.getElementById('display').innerHTML = currentNumberInput;
         };
     };
