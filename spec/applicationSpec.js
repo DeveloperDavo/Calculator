@@ -6,6 +6,7 @@ describe("application", function () {
     beforeEach(function () {
         container = fixture(
             '<div id="display">sample html</div>' +
+            '<button class="operation" id="/">/</button>' +
             '<button class="operation" id="*">*</button>' +
             '<button class="number" id="7">7</button>' +
             '<button class="number" id="8">8</button>' +
@@ -108,6 +109,16 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toEqual('6');
     });
 
+    it('should display result of dividing one number by another', function () {
+        application.init();
+
+        document.getElementById('6').click();
+        document.getElementById('/').click();
+        document.getElementById('3').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('display').textContent).toEqual('2');
+    });
     it('should display result of multiple chained operations', function () {
         application.init();
 

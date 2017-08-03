@@ -15,6 +15,10 @@ function Application() {
                 equation[i] = Number(equation[i - 1]) * Number(equation[i + 1]);
                 equation.splice(i + 1, 1);
                 equation.splice(i - 1, 1);
+            } else if (equation[i] === "/") {
+                equation[i] = Number(equation[i - 1]) / Number(equation[i + 1]);
+                equation.splice(i + 1, 1);
+                equation.splice(i - 1, 1);
             }
         }
         var result = Number(equation[0]);
