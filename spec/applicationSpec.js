@@ -220,6 +220,13 @@ describe("application", function () {
         document.getElementById('all-clear').click();
 
         expect(document.getElementById('display').textContent).toBe('');
+
+        document.getElementById('2').click();
+        document.getElementById('/').click();
+        document.getElementById('3').click();
+        document.getElementById('equals').click();
+        
+        expect(document.getElementById('display').textContent).toBeCloseTo('0.67', 2);
     });
 
 });
