@@ -247,6 +247,24 @@ describe("application", function () {
 
     });
 
+    it('should clear number entry', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('/').click();
+        document.getElementById('3').click();
+        document.getElementById('clear-entry').click();
+
+        expect(document.getElementById('display').textContent).toBe('');
+
+        document.getElementById('4').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('display').textContent).toBe('0.5');
+
+    });
+
+
 });
 
 function fixture(html) {

@@ -34,6 +34,7 @@ function Application() {
             } else if (equation[i] === "-") {
                 result -= Number(equation[i + 1]);
             } else {
+                console.log(equation);
                 console.log("shouldn't be here")
             }
         }
@@ -105,7 +106,11 @@ function Application() {
 
     var clearEntryOnClick = function () {
         document.getElementById('clear-entry').onclick = function () {
-            equation.splice(equation.length - 1);
+            if (currentNumberInput.length !== 0) {
+                currentNumberInput = "";
+            } else {
+                equation.splice(equation.length - 1);
+            }
             document.getElementById('display').innerHTML = currentNumberInput;
         };
     };
