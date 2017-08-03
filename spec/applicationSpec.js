@@ -7,8 +7,10 @@ describe("application", function () {
         container = fixture(
             '<div id="display">sample html</div>' +
             '<button class="number" id="7">7</button>' +
+            '<button class="number" id="8">8</button>' +
             '<button class="number" id="9">9</button>' +
             '<button class="number" id="5">5</button>' +
+            '<button class="operation" id="+">+</button>' +
             '<button class="number" id="3">3</button>'
         );
         document.body.appendChild(container);
@@ -42,6 +44,14 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toEqual('75');
     });
 
+    it('should display + operation', function () {
+        application.init();
+
+        document.getElementById('8').click();
+        document.getElementById('+').click();
+
+        expect(document.getElementById('display').textContent).toEqual('+');
+    });
 
 });
 
