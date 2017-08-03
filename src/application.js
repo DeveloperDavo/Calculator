@@ -57,9 +57,13 @@ function Application() {
         equalsElement.onclick = function () {
             clickedOnEquals = true;
             equation.push(currentNumberInput);
-            var result = 0;
-            for (var i = 0; i < equation.length; i = i + 2) {
-                result += Number(equation[i]);
+            var result = Number(equation[0]);
+            for (var i = 1; i < equation.length; i += 2) {
+                if (equation[i] === "+") {
+                    result += Number(equation[i + 1]);
+                } else {
+                    result -= Number(equation[i + 1]);
+                }
             }
             currentNumberInput = result.toString();
             equation = [];

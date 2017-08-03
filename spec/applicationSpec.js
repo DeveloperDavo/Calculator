@@ -9,6 +9,7 @@ describe("application", function () {
             '<button class="number" id="7">7</button>' +
             '<button class="number" id="8">8</button>' +
             '<button class="number" id="9">9</button>' +
+            '<button class="operation" id="-">-</button>' +
             '<button class="number" id="4">4</button>' +
             '<button class="number" id="5">5</button>' +
             '<button class="number" id="6">6</button>' +
@@ -82,6 +83,19 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toEqual('30');
     });
 
+    it('should display result of subtracting one number from another', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('0').click();
+        document.getElementById('-').click();
+        document.getElementById('1').click();
+        document.getElementById('0').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('display').textContent).toEqual('10');
+    });
+
     it('should display result of adding three or more numbers', function () {
         application.init();
 
@@ -145,6 +159,7 @@ describe("application", function () {
 
         expect(document.getElementById('display').textContent).toEqual('');
     });
+
 
 });
 
