@@ -50,6 +50,7 @@ function Application() {
             equation.push(currentNumberInput);
             currentNumberInput = "";
             var result = Number(equation[0]) + Number(equation[2]);
+            equation = [];
             document.getElementById('display').innerHTML = result.toString();
         };
     };
