@@ -12,8 +12,11 @@ describe("application", function () {
             '<button class="number" id="4">4</button>' +
             '<button class="number" id="5">5</button>' +
             '<button class="operation" id="+">+</button>' +
+            '<button class="number" id="1">1</button>' +
             '<button class="number" id="2">2</button>' +
-            '<button class="number" id="3">3</button>'
+            '<button class="number" id="3">3</button>' +
+            '<button class="number" id="0">0</button>' +
+            '<button class="operation" id="equals">=</button>'
         );
         document.body.appendChild(container);
         application = new Application(document);
@@ -63,6 +66,19 @@ describe("application", function () {
         document.getElementById('4').click();
 
         expect(document.getElementById('display').textContent).toEqual('4');
+    });
+
+    it('should display result of adding two numbers', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('0').click();
+        document.getElementById('+').click();
+        document.getElementById('1').click();
+        document.getElementById('0').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('display').textContent).toEqual('30');
     });
 
 });
