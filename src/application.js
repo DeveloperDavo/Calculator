@@ -9,8 +9,20 @@ function Application() {
     var equation = [];
     var clickedOnEquals = false;
 
+    var calculateResultFromEquation = function () {
+        var result = Number(equation[0]);
+        for (var i = 1; i < equation.length; i += 2) {
+            if (equation[i] === "+") {
+                result += Number(equation[i + 1]);
+            } else {
+                result -= Number(equation[i + 1]);
+            }
+        }
+        return result;
+    };
+
     // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
-    var setDisplayNumber = function (number) {
+    var displayCurrentNumber = function (number) {
         return function () {
             if (clickedOnEquals) {
                 currentNumberInput = number;
@@ -23,7 +35,7 @@ function Application() {
     };
 
     // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
-    var setDisplayOperation = function (operation) {
+    var displayOperation = function (operation) {
         return function () {
             equation.push(currentNumberInput);
             equation.push(operation);
@@ -34,40 +46,34 @@ function Application() {
         }
     };
 
-    var setDisplayNumberOnClick = function (numberElement) {
-        numberElement.onclick = setDisplayNumber(numberElement.innerHTML);
+    var displayCurrentNumberOnClick = function (numberElement) {
+        numberElement.onclick = displayCurrentNumber(numberElement.innerHTML);
     };
 
-    var setDisplayOperationOnClick = function (numberElement) {
-        numberElement.onclick = setDisplayOperation(numberElement.innerHTML);
+    var displayCurrentOperationOnClick = function (numberElement) {
+        numberElement.onclick = displayOperation(numberElement.innerHTML);
     };
 
     var displayEachNumberOnClick = function () {
         var numberElementsArray = convertNodeListToArray(document.getElementsByClassName('number'));
-        numberElementsArray.forEach(setDisplayNumberOnClick);
+        numberElementsArray.forEach(displayCurrentNumberOnClick);
     };
 
     var displayEachOperationOnClick = function () {
         var operationElementsArray = convertNodeListToArray(document.getElementsByClassName('operation'));
-        operationElementsArray.forEach(setDisplayOperationOnClick);
+        operationElementsArray.forEach(displayCurrentOperationOnClick);
     };
 
     var displayResultOnClick = function () {
         var equalsElement = document.getElementById('equals');
         equalsElement.onclick = function () {
-            clickedOnEquals = true;
             equation.push(currentNumberInput);
-            var result = Number(equation[0]);
-            for (var i = 1; i < equation.length; i += 2) {
-                if (equation[i] === "+") {
-                    result += Number(equation[i + 1]);
-                } else {
-                    result -= Number(equation[i + 1]);
-                }
-            }
-            currentNumberInput = result.toString();
-            equation = [];
+            currentNumberInput = calculateResultFromEquation().toString();
+
             document.getElementById('display').innerHTML = currentNumberInput;
+
+            clickedOnEquals = true;
+            equation = [];
         };
     };
 
