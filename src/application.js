@@ -26,9 +26,9 @@ function Application() {
     };
 
     var throwAndDisplayError = function () {
-        document.getElementById('display').innerHTML = "Error";
         var temp = equation;
         tearDown();
+        document.getElementById('display').innerHTML = "Error";
         throw "equation array has been compromised: [" + temp + "]";
     };
 
