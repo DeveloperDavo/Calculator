@@ -199,6 +199,16 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toEqual('0.3');
     });
 
+    it('should show result with decimal when dividing', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('/').click();
+        document.getElementById('3').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('display').textContent).toBeCloseTo('0.67', 2);
+    });
 
 });
 
