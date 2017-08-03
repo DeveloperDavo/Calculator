@@ -96,19 +96,19 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toEqual('10');
     });
 
-    it('should display result of adding three or more numbers', function () {
+    it('should display result of multiple chained operations', function () {
         application.init();
 
         document.getElementById('2').click();
         document.getElementById('0').click();
-        document.getElementById('+').click();
+        document.getElementById('-').click();
         document.getElementById('1').click();
         document.getElementById('0').click();
         document.getElementById('+').click();
         document.getElementById('6').click();
         document.getElementById('equals').click();
 
-        expect(document.getElementById('display').textContent).toEqual('36');
+        expect(document.getElementById('display').textContent).toEqual('16');
     });
 
     it('should display number after equals operation', function () {
@@ -130,12 +130,15 @@ describe("application", function () {
         document.getElementById('+').click();
         document.getElementById('4').click();
         document.getElementById('equals').click();
+
+        expect(document.getElementById('display').textContent).toEqual('6');
+
         document.getElementById('1').click();
-        document.getElementById('+').click();
+        document.getElementById('-').click();
         document.getElementById('1').click();
         document.getElementById('equals').click();
 
-        expect(document.getElementById('display').textContent).toEqual('2');
+        expect(document.getElementById('display').textContent).toEqual('0');
     });
 
     it('should perform addition on existing result', function () {
@@ -152,11 +155,13 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toEqual('7');
     });
 
-    it('should display nothing if addition is clicked first', function () {
+    it('should display nothing if operation is clicked first', function () {
         application.init();
 
         document.getElementById('+').click();
+        expect(document.getElementById('display').textContent).toEqual('');
 
+        document.getElementById('-').click();
         expect(document.getElementById('display').textContent).toEqual('');
     });
 
