@@ -10,12 +10,19 @@ function Application() {
     var clickedOnEquals = false;
 
     var calculateResultFromEquation = function () {
+        for (var i = 0; i < equation.length; i++) {
+            if (equation[i] === "*") {
+                equation[i] = Number(equation[i - 1]) * Number(equation[i + 1]);
+                equation.splice(i + 1, 1);
+                equation.splice(i - 1, 1);
+            }
+        }
         var result = Number(equation[0]);
-        for (var i = 1; i < equation.length; i += 2) {
-            if (equation[i] === "+") {
-                result += Number(equation[i + 1]);
+        for (var j = 1; j < equation.length; j += 2) {
+            if (equation[j] === "+") {
+                result += Number(equation[j + 1]);
             } else {
-                result -= Number(equation[i + 1]);
+                result -= Number(equation[j + 1]);
             }
         }
         return result;
