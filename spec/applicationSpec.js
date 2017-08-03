@@ -6,6 +6,7 @@ describe("application", function () {
     beforeEach(function () {
         container = fixture(
             '<div id="display">sample html</div>' +
+            '<button id="all-clear">AC</button>' +
             '<button class="operation" id="/">/</button>' +
             '<button class="operation" id="*">*</button>' +
             '<button class="number" id="7">7</button>' +
@@ -208,6 +209,17 @@ describe("application", function () {
         document.getElementById('equals').click();
 
         expect(document.getElementById('display').textContent).toBeCloseTo('0.67', 2);
+    });
+
+    it('should clear all', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('/').click();
+        document.getElementById('3').click();
+        document.getElementById('all-clear').click();
+
+        expect(document.getElementById('display').textContent).toBe('');
     });
 
 });

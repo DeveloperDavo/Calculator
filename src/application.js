@@ -99,10 +99,19 @@ function Application() {
         };
     };
 
+    var clearResultOnClick = function () {
+        document.getElementById('all-clear').onclick = function () {
+            currentNumberInput = "";
+            equation = [];
+            document.getElementById('display').innerHTML = currentNumberInput;
+        };
+    };
+
     this.init = function () {
         document.getElementById('display').innerHTML = "";
         displayEachNumberOnClick();
         displayEachOperationOnClick();
         displayResultOnClick();
+        clearResultOnClick();
     };
 }
