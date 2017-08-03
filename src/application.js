@@ -16,9 +16,12 @@ function Application() {
         numberElement.onclick = setDisplayValue(numberElement.innerHTML);
     };
 
-    this.init = function () {
+    var displayEachNumberOnClick = function () {
         var numberElementsArray = convertNodeListToArray(document.getElementsByClassName('number'));
         numberElementsArray.forEach(setDisplayValueOnClick);
+    };
+    this.init = function () {
+        displayEachNumberOnClick();
     };
 
 }
