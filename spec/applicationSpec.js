@@ -33,6 +33,12 @@ describe("application", function () {
         document.body.removeChild(container);
     });
 
+    it('should display value of 0 upon initialisation', function () {
+        application.init();
+
+        expect(document.getElementById('display').textContent).toEqual('0');
+    });
+
     it('should display value of button 3', function () {
         application.init();
 
@@ -181,14 +187,14 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toEqual('7');
     });
 
-    it('should display nothing if operation is clicked first', function () {
+    it('should keep displaying 0 if operation is clicked first', function () {
         application.init();
 
         document.getElementById('+').click();
-        expect(document.getElementById('display').textContent).toEqual('');
+        expect(document.getElementById('display').textContent).toEqual('0');
 
         document.getElementById('-').click();
-        expect(document.getElementById('display').textContent).toEqual('');
+        expect(document.getElementById('display').textContent).toEqual('0');
     });
 
     it('should display decimal number', function () {

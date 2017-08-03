@@ -148,7 +148,7 @@ function Application() {
     };
 
     this.init = function () {
-        document.getElementById('display').innerHTML = "";
+        document.getElementById('display').innerHTML = "0";
         displayEachNumberOnClick();
         displayEachOperationOnClick();
         displayResultOnClick();
