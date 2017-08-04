@@ -186,14 +186,14 @@ function Application() {
 
     var clearEntryOnClick = function () {
         document.getElementById('clear-entry').onclick = function () {
-            // FIXME
             if (isOperation(history[history.length - 1])) {
                 equation.splice(equation.length - 1);
+                history = history.slice(0, -1);
             } else {
+                history = history.slice(0, -1 * removeLeadingZeroes(multipleDigitStr).length);
                 multipleDigitStr = "0";
             }
             refreshDisplay(multipleDigitStr);
-            // TODO remove from history
         };
     };
 

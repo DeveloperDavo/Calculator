@@ -345,12 +345,14 @@ describe("application", function () {
         document.getElementById('clear-entry').click();
 
         expect(document.getElementById('display').textContent).toBe('0');
+        expect(document.getElementById('history').textContent).toBe('2');
 
         document.getElementById('-').click();
         document.getElementById('3').click();
         document.getElementById('equals').click();
 
         expect(document.getElementById('display').textContent).toBe('-1');
+        expect(document.getElementById('history').textContent).toBe('2-3=-1');
 
     });
 
@@ -363,11 +365,34 @@ describe("application", function () {
         document.getElementById('clear-entry').click();
 
         expect(document.getElementById('display').textContent).toBe('0');
+        expect(document.getElementById('history').textContent).toBe('2/');
 
         document.getElementById('4').click();
         document.getElementById('equals').click();
 
         expect(document.getElementById('display').textContent).toBe('0.5');
+        expect(document.getElementById('history').textContent).toBe('2/4=0.5');
+
+    });
+
+    it('should clear multi digit entry', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('+').click();
+        document.getElementById('2').click();
+        document.getElementById('0').click();
+        document.getElementById('clear-entry').click();
+
+        expect(document.getElementById('display').textContent).toBe('0');
+        expect(document.getElementById('history').textContent).toBe('2+');
+
+        document.getElementById('4').click();
+        document.getElementById('0').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('display').textContent).toBe('42');
+        expect(document.getElementById('history').textContent).toBe('2+40=42');
 
     });
 
