@@ -32,9 +32,9 @@ function Application() {
     };
 
     var clearAll = function () {
+        multipleDigitStr = "0";
         equation = [];
         clickedOnEquals = false;
-        multipleDigitStr = "0";
     };
 
     var throwAndDisplayError = function () {
@@ -88,6 +88,7 @@ function Application() {
             if (clickedOnEquals) {
                 // Don't append to existing digit string as this should be the previous result
                 multipleDigitStr = digitStr;
+                history = digitStr;
                 clickedOnEquals = false;
             } else {
                 // Append to existing digit string
@@ -136,7 +137,8 @@ function Application() {
         document.getElementById('decimal-point').onclick = function () {
             if (clickedOnEquals) {
                 // Don't append to existing digit string as this should be the previous result
-                multipleDigitStr = "0.";
+                multipleDigitStr = "0" + DECIMAL_POINT;
+                history = "0" + DECIMAL_POINT;
                 clickedOnEquals = false;
             } else {
                 // Append to existing digit string
