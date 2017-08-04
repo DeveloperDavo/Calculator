@@ -92,8 +92,7 @@ function Application() {
                 // only push to equation if there is number to push.
                 equation.push(currentNumberInput);
 
-                // FIXME
-                currentNumberInput = "";
+                currentNumberInput = "0";
 
             }
             equation.push(operation);
@@ -148,17 +147,10 @@ function Application() {
         };
     };
 
+    // FIXME
     var clearEntryOnClick = function () {
         document.getElementById('clear-entry').onclick = function () {
-            // FIXME
-            if (currentNumberInput.length !== 0) {
-                // entry is a number, so we need to remove it
-                initialiseDisplay();
-            } else {
-                // entry is an operation, so we need to remove it from the equation array.
-                equation.splice(equation.length - 1);
-                document.getElementById('display').innerHTML = "0";
-            }
+            initialiseDisplay();
         };
     };
 
