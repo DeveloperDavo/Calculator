@@ -33,7 +33,7 @@ function Application() {
     };
 
     /**
-     * eg. Replaces [2, *, 3, +, 4] with [3, +, 4]
+     * eg. Replaces [2, *, 3, +, 4] with [6, +, 4]
      */
     var squashMultiplicationsAndDivisions = function () {
         for (var i = 0; i < equation.length; i++) {
