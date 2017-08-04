@@ -347,6 +347,14 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toBe('0');
         expect(document.getElementById('history').textContent).toBe('2');
 
+    });
+
+    it('should still calculate result after clearing operation entry', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('/').click();
+        document.getElementById('clear-entry').click();
         document.getElementById('-').click();
         document.getElementById('3').click();
         document.getElementById('equals').click();
