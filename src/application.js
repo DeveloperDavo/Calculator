@@ -121,8 +121,7 @@ function Application() {
 
     var displayDecimalPointOnClick = function () {
         document.getElementById('decimal-point').onclick = function () {
-            // FIXME
-            if (clickedOnEquals || currentNumberInput.length === 0) {
+            if (clickedOnEquals) {
                 // Don't append to existing number as this should be the previous result
                 currentNumberInput = "0.";
                 clickedOnEquals = false;
