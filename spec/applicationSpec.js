@@ -276,6 +276,18 @@ describe("application", function () {
 
     });
 
+    it('should still calculate result when CE is the first button clicked', function () {
+        application.init();
+
+        document.getElementById('clear-entry').click();
+        document.getElementById('+').click();
+        document.getElementById('7').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('display').textContent).toBe('7');
+
+    });
+
     it('should not display 0 as the first digit of a whole number', function () {
         application.init();
 
