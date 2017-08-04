@@ -10,16 +10,11 @@ var spliceAroundIndex = function (array, index) {
 };
 
 function Application() {
-    var display = "";
     var currentNumberInput = "0";
     var equation = [];
     var clickedOnEquals = false;
 
-    var refreshDisplay = function () {
-        var displayInnerHtml = "0";
-        if (display.length !== 0) {
-            displayInnerHtml = display;
-        }
+    var refreshDisplay = function (displayInnerHtml) {
         document.getElementById('display').innerHTML = displayInnerHtml;
     };
 
@@ -32,8 +27,7 @@ function Application() {
     var throwAndDisplayError = function () {
         var temp = equation;
         clearAll();
-        display = "Error";
-        document.getElementById('display').innerHTML = "Error";
+        refreshDisplay("Error");
         throw "equation array has been compromised: [" + temp + "]";
     };
 
@@ -75,18 +69,17 @@ function Application() {
     };
 
     // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
-    var displayCurrentNumber = function (number) {
+    var displayCurrentNumber = function (numberElementInnerHtml) {
         return function () {
             if (clickedOnEquals) {
                 // Don't append to existing number as this should be the previous result
-                currentNumberInput = number;
+                currentNumberInput = numberElementInnerHtml;
                 clickedOnEquals = false;
             } else {
                 // Append to existing number
-                currentNumberInput += number;
+                currentNumberInput += numberElementInnerHtml;
             }
-            var currentNumberInputWithoutLeadingZeroes = Number(currentNumberInput).toString();
-            document.getElementById('display').innerHTML = currentNumberInputWithoutLeadingZeroes;
+            refreshDisplay(Number(currentNumberInput).toString());
         }
     };
 
@@ -101,7 +94,7 @@ function Application() {
 
             }
             equation.push(operation);
-            document.getElementById('display').innerHTML = operation;
+            refreshDisplay(operation);
         }
     };
 
@@ -130,7 +123,7 @@ function Application() {
 
             currentNumberInput = calculateResultFromEquation().toString();
 
-            document.getElementById('display').innerHTML = currentNumberInput;
+            refreshDisplay(Number(currentNumberInput).toString());
 
             clickedOnEquals = true;
             equation = [];
@@ -139,7 +132,7 @@ function Application() {
 
 
     this.init = function () {
-        refreshDisplay();
+        refreshDisplay("0");
         displayEachNumberOnClick();
         displayEachOperationOnClick();
         displayResultOnClick();
