@@ -325,6 +325,18 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toBeCloseTo('0.67', 2);
     });
 
+    it('should still calculate result after clearing all first', function () {
+        application.init();
+
+        document.getElementById('all-clear').click();
+        document.getElementById('+').click();
+        document.getElementById('7').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('display').textContent).toBe('7');
+
+    });
+
 });
 
 function fixture(html) {
