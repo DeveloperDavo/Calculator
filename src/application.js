@@ -14,20 +14,19 @@ function Application() {
     var equation = [];
     var clickedOnEquals = false;
 
-    var initialiseDisplay = function () {
-        currentNumberInput = "0";
+    var refreshDisplay = function () {
         document.getElementById('display').innerHTML = currentNumberInput;
     };
 
-    var tearDown = function () {
+    var clearAll = function () {
         equation = [];
         clickedOnEquals = false;
-        initialiseDisplay();
+        currentNumberInput = "0";
     };
 
     var throwAndDisplayError = function () {
         var temp = equation;
-        tearDown();
+        clearAll();
         document.getElementById('display').innerHTML = "Error";
         throw "equation array has been compromised: [" + temp + "]";
     };
@@ -150,18 +149,20 @@ function Application() {
     // FIXME
     var clearEntryOnClick = function () {
         document.getElementById('clear-entry').onclick = function () {
-            initialiseDisplay();
+            currentNumberInput = "0";
+            refreshDisplay();
         };
     };
 
     var clearAllOnClick = function () {
         document.getElementById('all-clear').onclick = function () {
-            tearDown();
+            clearAll();
+            refreshDisplay();
         };
     };
 
     this.init = function () {
-        initialiseDisplay();
+        refreshDisplay();
         displayEachNumberOnClick();
         displayEachOperationOnClick();
         displayDecimalPointOnClick();
