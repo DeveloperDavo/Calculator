@@ -16,6 +16,7 @@ var spliceAroundIndex = function (array, index) {
 function Application() {
     var DECIMAL_POINT = ".";
     var EQUALS_SYMBOL = "=";
+    var OPERATIONS = ["+", "-", "/", "*"];
 
     var multipleDigitStr = "0";
     var equation = [];
@@ -104,13 +105,12 @@ function Application() {
                 history = multipleDigitStr;
             }
 
-            if (multipleDigitStr.length !== 0) {
-                // only push to equation if there is a digit string to push.
+            // only push digits to equation if the equation is empty last part of the equation is an operation.
+            if (equation.length === 0 || isOperation(equation[equation.length - 1])) {
                 equation.push(multipleDigitStr);
-
-                multipleDigitStr = "0";
-
             }
+
+            multipleDigitStr = "0";
 
             history += operation;
             equation.push(operation);
@@ -180,6 +180,24 @@ function Application() {
         };
     };
 
+    var isOperation = function (text) {
+        return OPERATIONS.indexOf(text) !== -1;
+    };
+
+    var clearEntryOnClick = function () {
+        document.getElementById('clear-entry').onclick = function () {
+            // FIXME
+            if (isOperation(history[history.length - 1])) {
+                equation.splice(equation.length - 1);
+            } else {
+                multipleDigitStr = "0";
+            }
+            refreshDisplay(multipleDigitStr);
+            // TODO remove from history
+        };
+    };
+
+
     this.init = function () {
         refreshDisplay("0");
         displayEachNumberOnClick();
@@ -187,5 +205,6 @@ function Application() {
         displayDecimalPointOnClick();
         displayResultOnClick();
         clearAllOnClick();
+        clearEntryOnClick();
     };
 }

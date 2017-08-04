@@ -337,6 +337,52 @@ describe("application", function () {
 
     });
 
+    it('should clear operation entry', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('/').click();
+        document.getElementById('clear-entry').click();
+
+        expect(document.getElementById('display').textContent).toBe('0');
+
+        document.getElementById('-').click();
+        document.getElementById('3').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('display').textContent).toBe('-1');
+
+    });
+
+    it('should clear number entry', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('/').click();
+        document.getElementById('3').click();
+        document.getElementById('clear-entry').click();
+
+        expect(document.getElementById('display').textContent).toBe('0');
+
+        document.getElementById('4').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('display').textContent).toBe('0.5');
+
+    });
+
+    it('should still calculate result after clearing entry first', function () {
+        application.init();
+
+        document.getElementById('clear-entry').click();
+        document.getElementById('+').click();
+        document.getElementById('7').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('display').textContent).toBe('7');
+
+    });
+
 });
 
 function fixture(html) {
