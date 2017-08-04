@@ -292,6 +292,19 @@ describe("application", function () {
 
     });
 
+    it('should display new history after reusing result', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('+').click();
+        document.getElementById('4').click();
+        document.getElementById('equals').click();
+        document.getElementById('+').click();
+        document.getElementById('8').click();
+        
+        expect(document.getElementById('history').textContent).toEqual('6+8');
+    });
+
 });
 
 function fixture(html) {

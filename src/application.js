@@ -31,17 +31,12 @@ function Application() {
         document.getElementById('history').innerHTML = historyInnerHtml;
     };
 
-    var clearAll = function () {
-        multipleDigitStr = "0";
-        equation = [];
-        clickedOnEquals = false;
-    };
-
     var throwAndDisplayError = function () {
         var temp = equation;
-        clearAll();
-        refreshDisplay("Error");
+        multipleDigitStr = "0";
+        equation = [];
         history = "";
+        refreshDisplay("Error");
         throw "equation array has been compromised: [" + temp + "]";
     };
 
@@ -88,13 +83,12 @@ function Application() {
             if (clickedOnEquals) {
                 // Don't append to existing digit string as this should be the previous result
                 multipleDigitStr = digitStr;
-                history = digitStr;
                 clickedOnEquals = false;
             } else {
                 // Append to existing digit string
                 multipleDigitStr += digitStr;
-                history += digitStr;
             }
+            history += digitStr;
             refreshDisplay(removeLeadingZeroes(multipleDigitStr));
         }
     };
@@ -102,6 +96,10 @@ function Application() {
     // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
     var displayOperation = function (operation) {
         return function () {
+            if (clickedOnEquals) {
+                history = multipleDigitStr;
+            }
+
             if (multipleDigitStr.length !== 0) {
                 // only push to equation if there is a digit string to push.
                 equation.push(multipleDigitStr);
@@ -109,6 +107,7 @@ function Application() {
                 multipleDigitStr = "0";
 
             }
+
             history += operation;
             equation.push(operation);
             refreshDisplay(operation);
@@ -163,8 +162,9 @@ function Application() {
 
             refreshDisplay(removeLeadingZeroes(multipleDigitStr));
 
-            clickedOnEquals = true;
+            history = "";
             equation = [];
+            clickedOnEquals = true;
         };
     };
 
