@@ -1,5 +1,9 @@
 'use strict';
 
+var removeLeadingZeroes = function (multipleDigitStr) {
+    return Number(multipleDigitStr).toString();
+};
+
 var convertNodeListToArray = function (nodeList) {
     return Array.prototype.slice.call(nodeList);
 };
@@ -79,7 +83,7 @@ function Application() {
                 // Append to existing digit string
                 multipleDigitStr += digitStr;
             }
-            refreshMainDisplay(Number(multipleDigitStr).toString());
+            refreshMainDisplay(removeLeadingZeroes(multipleDigitStr));
         }
     };
 
@@ -124,6 +128,7 @@ function Application() {
                 clickedOnEquals = false;
             } else {
                 // Append to existing digit string
+                multipleDigitStr = removeLeadingZeroes(multipleDigitStr);
                 multipleDigitStr += ".";
             }
             refreshMainDisplay(multipleDigitStr);
@@ -138,7 +143,7 @@ function Application() {
 
             multipleDigitStr = calculateResultFromEquation().toString();
 
-            refreshMainDisplay(Number(multipleDigitStr).toString());
+            refreshMainDisplay(removeLeadingZeroes(multipleDigitStr));
 
             clickedOnEquals = true;
             equation = [];
