@@ -4,6 +4,10 @@ var removeLeadingZeroes = function (multipleDigitStr) {
     return Number(multipleDigitStr).toString();
 };
 
+var removeLastEntryIn = function (array) {
+    return array.slice(0, -1);
+};
+
 var convertNodeListToArray = function (nodeList) {
     return Array.prototype.slice.call(nodeList);
 };
@@ -23,13 +27,16 @@ function Application() {
     var clickedOnEquals = false;
     var history = "";
 
-    var refreshDisplay = function (textToDisplay) {
-        document.getElementById('display').innerHTML = textToDisplay;
+    var refreshHistory = function () {
         var historyInnerHtml = history;
         if (history.length === 0) {
             historyInnerHtml = "0";
         }
         document.getElementById('history').innerHTML = historyInnerHtml;
+    };
+    var refreshDisplay = function (textToDisplay) {
+        document.getElementById('display').innerHTML = textToDisplay;
+        refreshHistory();
     };
 
     var clearAll = function () {
@@ -102,18 +109,21 @@ function Application() {
     var displayOperation = function (operation) {
         return function () {
             if (clickedOnEquals) {
+                // reuse current result
                 history = multipleDigitStr;
             }
 
-            // only push digits to equation if the equation is empty last part of the equation is an operation.
+            // only push digits to equation if the equation is empty or the last part of the equation is an operation.
             if (equation.length === 0 || isOperation(equation[equation.length - 1])) {
                 equation.push(multipleDigitStr);
             }
 
+            // reset
             multipleDigitStr = "0";
 
+            // set history to 0 if it is empty
             if (history.length === 0) {
-                history += multipleDigitStr;
+                history = multipleDigitStr;
             }
 
             history += operation;
@@ -143,12 +153,12 @@ function Application() {
     var displayDecimalPointOnClick = function () {
         document.getElementById('decimal-point').onclick = function () {
             if (clickedOnEquals) {
-                // Don't append to existing digit string as this should be the previous result
+                // Don't append to existing result
                 multipleDigitStr = "0" + DECIMAL_POINT;
                 history = "0" + DECIMAL_POINT;
                 clickedOnEquals = false;
             } else {
-                // Append to existing digit string
+                // Append to existing existing digit string
                 multipleDigitStr = removeLeadingZeroes(multipleDigitStr);
                 multipleDigitStr += DECIMAL_POINT;
                 history += DECIMAL_POINT;
@@ -190,13 +200,17 @@ function Application() {
 
     var clearEntryOnClick = function () {
         document.getElementById('clear-entry').onclick = function () {
+
             if (isOperation(history[history.length - 1])) {
-                equation = equation.slice(0, -1);
-                history = history.slice(0, -1);
+                equation = removeLastEntryIn(equation);
+                history = removeLastEntryIn(history);
             } else {
+                // remove multiDigitStr from history
                 history = history.slice(0, -1 * removeLeadingZeroes(multipleDigitStr).length);
+
                 multipleDigitStr = "0";
             }
+
             refreshDisplay(multipleDigitStr);
             clickedOnEquals = false;
         };
