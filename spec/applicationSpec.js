@@ -267,6 +267,17 @@ describe("application", function () {
 
     });
 
+    it('should display 0 in history when operation is clicked before a number', function () {
+        application.init();
+
+        document.getElementById('-').click();
+        document.getElementById('3').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('history').textContent).toBe('0-3=-3');
+
+    });
+
     it('should display history', function () {
         application.init();
 

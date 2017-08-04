@@ -112,6 +112,10 @@ function Application() {
 
             multipleDigitStr = "0";
 
+            if (history.length === 0) {
+                history += multipleDigitStr;
+            }
+
             history += operation;
             equation.push(operation);
             refreshDisplay(operation);
