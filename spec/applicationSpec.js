@@ -255,6 +255,31 @@ describe("application", function () {
 
     });
 
+    it('should display history', function () {
+        application.init();
+
+        expect(document.getElementById('history').textContent).toBe('0');
+
+        document.getElementById('5').click();
+        expect(document.getElementById('history').textContent).toBe('5');
+
+        document.getElementById('-').click();
+        expect(document.getElementById('history').textContent).toBe('5-');
+
+        document.getElementById('3').click();
+        expect(document.getElementById('history').textContent).toBe('5-3');
+
+        document.getElementById('/').click();
+        expect(document.getElementById('history').textContent).toBe('5-3/');
+
+        document.getElementById('1').click();
+        expect(document.getElementById('history').textContent).toBe('5-3/1');
+
+        document.getElementById('equals').click();
+        expect(document.getElementById('history').textContent).toBe('5-3/1=2');
+
+    });
+
 });
 
 function fixture(html) {

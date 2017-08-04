@@ -14,12 +14,21 @@ var spliceAroundIndex = function (array, index) {
 };
 
 function Application() {
+    var DECIMAL_POINT = ".";
+    var EQUALS_SYMBOL = "=";
+
     var multipleDigitStr = "0";
     var equation = [];
     var clickedOnEquals = false;
+    var history = "";
 
-    var refreshMainDisplay = function (displayInnerHtml) {
-        document.getElementById('display').innerHTML = displayInnerHtml;
+    var refreshDisplay = function (textToDisplay) {
+        document.getElementById('display').innerHTML = textToDisplay;
+        var historyInnerHtml = history;
+        if (history.length === 0) {
+            historyInnerHtml = "0";
+        }
+        document.getElementById('history').innerHTML = historyInnerHtml;
     };
 
     var clearAll = function () {
@@ -31,7 +40,8 @@ function Application() {
     var throwAndDisplayError = function () {
         var temp = equation;
         clearAll();
-        refreshMainDisplay("Error");
+        refreshDisplay("Error");
+        history = "";
         throw "equation array has been compromised: [" + temp + "]";
     };
 
@@ -82,8 +92,9 @@ function Application() {
             } else {
                 // Append to existing digit string
                 multipleDigitStr += digitStr;
+                history += digitStr;
             }
-            refreshMainDisplay(removeLeadingZeroes(multipleDigitStr));
+            refreshDisplay(removeLeadingZeroes(multipleDigitStr));
         }
     };
 
@@ -97,8 +108,9 @@ function Application() {
                 multipleDigitStr = "0";
 
             }
+            history += operation;
             equation.push(operation);
-            refreshMainDisplay(operation);
+            refreshDisplay(operation);
         }
     };
 
@@ -129,9 +141,10 @@ function Application() {
             } else {
                 // Append to existing digit string
                 multipleDigitStr = removeLeadingZeroes(multipleDigitStr);
-                multipleDigitStr += ".";
+                multipleDigitStr += DECIMAL_POINT;
+                history += DECIMAL_POINT;
             }
-            refreshMainDisplay(multipleDigitStr);
+            refreshDisplay(multipleDigitStr);
         };
 
     };
@@ -143,7 +156,10 @@ function Application() {
 
             multipleDigitStr = calculateResultFromEquation().toString();
 
-            refreshMainDisplay(removeLeadingZeroes(multipleDigitStr));
+            history += EQUALS_SYMBOL;
+            history += multipleDigitStr;
+
+            refreshDisplay(removeLeadingZeroes(multipleDigitStr));
 
             clickedOnEquals = true;
             equation = [];
@@ -152,7 +168,7 @@ function Application() {
 
 
     this.init = function () {
-        refreshMainDisplay("0");
+        refreshDisplay("0");
         displayEachNumberOnClick();
         displayEachOperationOnClick();
         displayDecimalPointOnClick();
