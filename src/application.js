@@ -146,20 +146,6 @@ function Application() {
         };
     };
 
-    // FIXME
-    var clearEntryOnClick = function () {
-        document.getElementById('clear-entry').onclick = function () {
-            currentNumberInput = "0";
-            refreshDisplay();
-        };
-    };
-
-    var clearAllOnClick = function () {
-        document.getElementById('all-clear').onclick = function () {
-            clearAll();
-            refreshDisplay();
-        };
-    };
 
     this.init = function () {
         refreshDisplay();
@@ -167,7 +153,5 @@ function Application() {
         displayEachOperationOnClick();
         displayDecimalPointOnClick();
         displayResultOnClick();
-        clearEntryOnClick();
-        clearAllOnClick();
     };
 }
