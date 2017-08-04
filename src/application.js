@@ -10,12 +10,17 @@ var spliceAroundIndex = function (array, index) {
 };
 
 function Application() {
+    var display = "";
     var currentNumberInput = "0";
     var equation = [];
     var clickedOnEquals = false;
 
     var refreshDisplay = function () {
-        document.getElementById('display').innerHTML = currentNumberInput;
+        var displayInnerHtml = "0";
+        if (display.length !== 0) {
+            displayInnerHtml = display;
+        }
+        document.getElementById('display').innerHTML = displayInnerHtml;
     };
 
     var clearAll = function () {
