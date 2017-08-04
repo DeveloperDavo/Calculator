@@ -194,6 +194,7 @@ function Application() {
                 multipleDigitStr = "0";
             }
             refreshDisplay(multipleDigitStr);
+            clickedOnEquals = false;
         };
     };
 

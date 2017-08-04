@@ -364,6 +364,24 @@ describe("application", function () {
 
     });
 
+    it('should still display result and history after clearing operation entry after equals', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('-').click();
+        document.getElementById('3').click();
+        document.getElementById('equals').click();
+        document.getElementById('-').click();
+        document.getElementById('clear-entry').click();
+        document.getElementById('+').click();
+        document.getElementById('2').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('display').textContent).toBe('1');
+        expect(document.getElementById('history').textContent).toBe('-1+2=1');
+
+    });
+
     it('should clear number entry', function () {
         application.init();
 
