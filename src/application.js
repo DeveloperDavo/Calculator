@@ -11,17 +11,11 @@ var spliceAroundIndex = function (array, index) {
 
 function Application() {
     var currentNumberInput = "0";
-    var history = "";
     var equation = [];
     var clickedOnEquals = false;
 
     var refreshDisplay = function () {
         document.getElementById('display').innerHTML = currentNumberInput;
-        if (history.length === 0) {
-            document.getElementById('history').innerHTML = "0";
-        } else {
-            document.getElementById('history').innerHTML = history;
-        }
     };
 
     var clearAll = function () {
@@ -85,10 +79,8 @@ function Application() {
                 // Append to existing number
                 currentNumberInput += number;
             }
-            history += number;
             var currentNumberInputWithoutLeadingZeroes = Number(currentNumberInput).toString();
             document.getElementById('display').innerHTML = currentNumberInputWithoutLeadingZeroes;
-            document.getElementById('history').innerHTML = history;
         }
     };
 
@@ -103,9 +95,7 @@ function Application() {
 
             }
             equation.push(operation);
-            history += operation;
             document.getElementById('display').innerHTML = operation;
-            document.getElementById('history').innerHTML = history;
         }
     };
 
@@ -137,9 +127,7 @@ function Application() {
                 // Append to existing number
                 currentNumberInput += ".";
             }
-            history += ".";
             document.getElementById('display').innerHTML = currentNumberInput;
-            document.getElementById('history').innerHTML = history;
         };
 
     };
@@ -151,9 +139,7 @@ function Application() {
 
             currentNumberInput = calculateResultFromEquation().toString();
 
-            history += "=";
             document.getElementById('display').innerHTML = currentNumberInput;
-            document.getElementById('history').innerHTML = history;
 
             clickedOnEquals = true;
             equation = [];
