@@ -9,16 +9,17 @@ describe("application", function () {
             '<div id="history">sample history</div>' +
             '<button id="all-clear">AC</button>' +
             '<button id="clear-entry">CE</button>' +
-            '<button class="operation" id="/">/</button>' +
-            '<button class="operation" id="*">*</button>' +
+            // '<button class="operation" id="/">&#247;</button>' +
+            '<button class="operation" id="/" value="/">/</button>' +
+            '<button class="operation" id="*" value="*">&times;</button>' +
             '<button class="number" id="7">7</button>' +
             '<button class="number" id="8">8</button>' +
             '<button class="number" id="9">9</button>' +
-            '<button class="operation" id="-">-</button>' +
+            '<button class="operation" id="-" value="-">-</button>' +
             '<button class="number" id="4">4</button>' +
             '<button class="number" id="5">5</button>' +
             '<button class="number" id="6">6</button>' +
-            '<button class="operation" id="+">+</button>' +
+            '<button class="operation" id="+" value="+">+</button>' +
             '<button class="number" id="1">1</button>' +
             '<button class="number" id="2">2</button>' +
             '<button class="number" id="3">3</button>' +

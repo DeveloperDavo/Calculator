@@ -146,7 +146,7 @@ function Application() {
     };
 
     var displayCurrentOperationOnClick = function (numberElement) {
-        numberElement.onclick = displayOperation(numberElement.innerHTML);
+        numberElement.onclick = displayOperation(numberElement.value);
     };
 
     var displayEachNumberOnClick = function () {
