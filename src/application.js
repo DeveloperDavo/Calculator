@@ -27,6 +27,14 @@ function Application() {
     var clickedOnEquals = false;
     var history = "";
 
+    var refreshMainDisplay = function (textToDisplay) {
+        var displayInnerHtml = textToDisplay;
+        if (textToDisplay.length === 0) {
+            displayInnerHtml = "0";
+        }
+        document.getElementById('display').innerHTML = displayInnerHtml;
+    };
+
     var refreshHistory = function () {
         var historyInnerHtml = history;
         if (history.length === 0) {
@@ -34,14 +42,15 @@ function Application() {
         }
         document.getElementById('history').innerHTML = historyInnerHtml;
     };
+
     var refreshDisplay = function (textToDisplay) {
-        document.getElementById('display').innerHTML = textToDisplay;
+        refreshMainDisplay(textToDisplay);
         refreshHistory();
     };
 
     var clearAll = function () {
         equation = [];
-        multipleDigitStr = "0";
+        multipleDigitStr = "";
         history = "";
     };
 
@@ -119,11 +128,11 @@ function Application() {
             }
 
             // reset
-            multipleDigitStr = "0";
+            multipleDigitStr = "";
 
             // set history to 0 if it is empty
             if (history.length === 0) {
-                history = multipleDigitStr;
+                history = "0";
             }
 
             history += operation;
@@ -178,7 +187,7 @@ function Application() {
             history += EQUALS_SYMBOL;
             history += multipleDigitStr;
 
-            refreshDisplay(removeLeadingZeroes(multipleDigitStr));
+            refreshDisplay(multipleDigitStr);
 
             history = "";
             equation = [];
@@ -190,7 +199,7 @@ function Application() {
         document.getElementById('all-clear').onclick = function () {
             clearAll();
             clickedOnEquals = false;
-            refreshDisplay(removeLeadingZeroes(multipleDigitStr));
+            refreshDisplay(multipleDigitStr);
         };
     };
 
@@ -208,7 +217,7 @@ function Application() {
                 // remove multiDigitStr from history
                 history = history.slice(0, -1 * removeLeadingZeroes(multipleDigitStr).length);
 
-                multipleDigitStr = "0";
+                multipleDigitStr = "";
             }
 
             refreshDisplay(multipleDigitStr);
