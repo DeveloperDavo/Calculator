@@ -204,16 +204,6 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toEqual('/');
     });
 
-    it('should display decimal number', function () {
-        application.init();
-
-        document.getElementById('0').click();
-        document.getElementById('decimal-point').click();
-        document.getElementById('3').click();
-
-        expect(document.getElementById('display').textContent).toEqual('0.3');
-    });
-
     it('should show result with decimal when dividing', function () {
         application.init();
 
@@ -232,14 +222,6 @@ describe("application", function () {
         document.getElementById('2').click();
 
         expect(document.getElementById('display').textContent).toBe('2');
-    });
-
-    it('should display 0 as the first digit if decimal point is the first input', function () {
-        application.init();
-
-        document.getElementById('decimal-point').click();
-
-        expect(document.getElementById('display').textContent).toBe('0.');
     });
 
     it('should calculate result when operation is clicked before a number', function () {
