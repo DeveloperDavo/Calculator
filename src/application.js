@@ -187,7 +187,7 @@ function Application() {
     var clearEntryOnClick = function () {
         document.getElementById('clear-entry').onclick = function () {
             if (isOperation(history[history.length - 1])) {
-                equation.splice(equation.length - 1);
+                equation = equation.slice(0, -1);
                 history = history.slice(0, -1);
             } else {
                 history = history.slice(0, -1 * removeLeadingZeroes(multipleDigitStr).length);
