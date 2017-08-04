@@ -22,7 +22,7 @@ describe("application", function () {
             '<button class="number" id="2">2</button>' +
             '<button class="number" id="3">3</button>' +
             '<button class="number" id="0">0</button>' +
-            '<button class="number" id="decimal">.</button>' +
+            '<button id="decimal-point">.</button>' +
             '<button class="operation" id="equals">=</button>'
         );
         document.body.appendChild(container);
@@ -201,7 +201,7 @@ describe("application", function () {
         application.init();
 
         document.getElementById('0').click();
-        document.getElementById('decimal').click();
+        document.getElementById('decimal-point').click();
         document.getElementById('3').click();
 
         expect(document.getElementById('display').textContent).toEqual('0.3');
@@ -278,6 +278,15 @@ describe("application", function () {
 
         expect(document.getElementById('display').textContent).toBe('2');
     });
+
+    it('should display 0 as the first digit if decimal point is the first input', function () {
+        application.init();
+
+        document.getElementById('decimal-point').click();
+
+        expect(document.getElementById('display').textContent).toBe('0.');
+    });
+
 
 });
 

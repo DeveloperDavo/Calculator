@@ -119,6 +119,21 @@ function Application() {
         operationElementsArray.forEach(displayCurrentOperationOnClick);
     };
 
+    var displayDecimalPointOnClick = function () {
+        document.getElementById('decimal-point').onclick = function () {
+            if (clickedOnEquals || currentNumberInput.length === 0) {
+                // Don't append to existing number as this should be the previous result
+                currentNumberInput = "0.";
+                clickedOnEquals = false;
+            } else {
+                // Append to existing number
+                currentNumberInput += ".";
+            }
+            document.getElementById('display').innerHTML = currentNumberInput;
+        };
+
+    };
+
     var displayResultOnClick = function () {
         var equalsElement = document.getElementById('equals');
         equalsElement.onclick = function () {
@@ -156,6 +171,7 @@ function Application() {
         initialiseDisplay();
         displayEachNumberOnClick();
         displayEachOperationOnClick();
+        displayDecimalPointOnClick();
         displayResultOnClick();
         clearEntryOnClick();
         clearAllOnClick();
