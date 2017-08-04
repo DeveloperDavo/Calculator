@@ -10,7 +10,7 @@ var spliceAroundIndex = function (array, index) {
 };
 
 function Application() {
-    var currentNumberInput = "0";
+    var multipleDigitStr = "0";
     var equation = [];
     var clickedOnEquals = false;
 
@@ -21,7 +21,7 @@ function Application() {
     var clearAll = function () {
         equation = [];
         clickedOnEquals = false;
-        currentNumberInput = "0";
+        multipleDigitStr = "0";
     };
 
     var throwAndDisplayError = function () {
@@ -69,28 +69,28 @@ function Application() {
     };
 
     // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
-    var displayCurrentNumber = function (numberElementInnerHtml) {
+    var displayCurrentNumber = function (digitStr) {
         return function () {
             if (clickedOnEquals) {
                 // Don't append to existing number as this should be the previous result
-                currentNumberInput = numberElementInnerHtml;
+                multipleDigitStr = digitStr;
                 clickedOnEquals = false;
             } else {
                 // Append to existing number
-                currentNumberInput += numberElementInnerHtml;
+                multipleDigitStr += digitStr;
             }
-            refreshMainDisplay(Number(currentNumberInput).toString());
+            refreshMainDisplay(Number(multipleDigitStr).toString());
         }
     };
 
     // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
     var displayOperation = function (operation) {
         return function () {
-            if (currentNumberInput.length !== 0) {
+            if (multipleDigitStr.length !== 0) {
                 // only push to equation if there is number to push.
-                equation.push(currentNumberInput);
+                equation.push(multipleDigitStr);
 
-                currentNumberInput = "0";
+                multipleDigitStr = "0";
 
             }
             equation.push(operation);
@@ -119,11 +119,11 @@ function Application() {
     var displayResultOnClick = function () {
         var equalsElement = document.getElementById('equals');
         equalsElement.onclick = function () {
-            equation.push(currentNumberInput);
+            equation.push(multipleDigitStr);
 
-            currentNumberInput = calculateResultFromEquation().toString();
+            multipleDigitStr = calculateResultFromEquation().toString();
 
-            refreshMainDisplay(Number(currentNumberInput).toString());
+            refreshMainDisplay(Number(multipleDigitStr).toString());
 
             clickedOnEquals = true;
             equation = [];
