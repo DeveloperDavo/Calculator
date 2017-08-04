@@ -301,8 +301,28 @@ describe("application", function () {
         document.getElementById('equals').click();
         document.getElementById('+').click();
         document.getElementById('8').click();
-        
+
         expect(document.getElementById('history').textContent).toEqual('6+8');
+    });
+
+    it('should clear all', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('/').click();
+        document.getElementById('3').click();
+        document.getElementById('all-clear').click();
+
+        expect(document.getElementById('display').textContent).toBe('0');
+        expect(document.getElementById('history').textContent).toBe('0');
+
+        document.getElementById('2').click();
+        document.getElementById('/').click();
+        document.getElementById('3').click();
+        expect(document.getElementById('history').textContent).toBe('2/3');
+
+        document.getElementById('equals').click();
+        expect(document.getElementById('display').textContent).toBeCloseTo('0.67', 2);
     });
 
 });

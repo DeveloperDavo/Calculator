@@ -31,11 +31,15 @@ function Application() {
         document.getElementById('history').innerHTML = historyInnerHtml;
     };
 
+    var clearAll = function () {
+        equation = [];
+        multipleDigitStr = "0";
+        history = "";
+    };
+
     var throwAndDisplayError = function () {
         var temp = equation;
-        multipleDigitStr = "0";
-        equation = [];
-        history = "";
+        clearAll();
         refreshDisplay("Error");
         throw "equation array has been compromised: [" + temp + "]";
     };
@@ -168,6 +172,13 @@ function Application() {
         };
     };
 
+    var clearAllOnClick = function () {
+        document.getElementById('all-clear').onclick = function () {
+            clearAll();
+            clickedOnEquals = false;
+            refreshDisplay(removeLeadingZeroes(multipleDigitStr));
+        };
+    };
 
     this.init = function () {
         refreshDisplay("0");
@@ -175,5 +186,6 @@ function Application() {
         displayEachOperationOnClick();
         displayDecimalPointOnClick();
         displayResultOnClick();
+        clearAllOnClick();
     };
 }
