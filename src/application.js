@@ -80,7 +80,8 @@ function Application() {
                 // Append to existing number
                 currentNumberInput += number;
             }
-            document.getElementById('display').innerHTML = currentNumberInput;
+            var currentNumberInputWithoutLeadingZeroes = Number(currentNumberInput).toString();
+            document.getElementById('display').innerHTML = currentNumberInputWithoutLeadingZeroes;
         }
     };
 

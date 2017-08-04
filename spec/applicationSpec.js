@@ -270,6 +270,14 @@ describe("application", function () {
 
     });
 
+    it('should not display 0 as the first digit of a whole number', function () {
+        application.init();
+
+        document.getElementById('0').click();
+        document.getElementById('2').click();
+
+        expect(document.getElementById('display').textContent).toBe('2');
+    });
 
 });
 
