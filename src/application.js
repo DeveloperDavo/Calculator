@@ -14,7 +14,7 @@ function Application() {
     var equation = [];
     var clickedOnEquals = false;
 
-    var refreshDisplay = function (displayInnerHtml) {
+    var refreshMainDisplay = function (displayInnerHtml) {
         document.getElementById('display').innerHTML = displayInnerHtml;
     };
 
@@ -27,7 +27,7 @@ function Application() {
     var throwAndDisplayError = function () {
         var temp = equation;
         clearAll();
-        refreshDisplay("Error");
+        refreshMainDisplay("Error");
         throw "equation array has been compromised: [" + temp + "]";
     };
 
@@ -79,7 +79,7 @@ function Application() {
                 // Append to existing number
                 currentNumberInput += numberElementInnerHtml;
             }
-            refreshDisplay(Number(currentNumberInput).toString());
+            refreshMainDisplay(Number(currentNumberInput).toString());
         }
     };
 
@@ -94,7 +94,7 @@ function Application() {
 
             }
             equation.push(operation);
-            refreshDisplay(operation);
+            refreshMainDisplay(operation);
         }
     };
 
@@ -123,7 +123,7 @@ function Application() {
 
             currentNumberInput = calculateResultFromEquation().toString();
 
-            refreshDisplay(Number(currentNumberInput).toString());
+            refreshMainDisplay(Number(currentNumberInput).toString());
 
             clickedOnEquals = true;
             equation = [];
@@ -132,7 +132,7 @@ function Application() {
 
 
     this.init = function () {
-        refreshDisplay("0");
+        refreshMainDisplay("0");
         displayEachNumberOnClick();
         displayEachOperationOnClick();
         displayResultOnClick();
