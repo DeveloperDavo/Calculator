@@ -18,7 +18,7 @@ function Application() {
     var EQUALS_SYMBOL = "=";
     var OPERATIONS = ["+", "-", "/", "*"];
 
-    var multipleDigitStr = "0";
+    var multipleDigitStr = "";
     var equation = [];
     var clickedOnEquals = false;
     var history = "";
