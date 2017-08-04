@@ -72,11 +72,11 @@ function Application() {
     var displayCurrentNumber = function (digitStr) {
         return function () {
             if (clickedOnEquals) {
-                // Don't append to existing number as this should be the previous result
+                // Don't append to existing digit string as this should be the previous result
                 multipleDigitStr = digitStr;
                 clickedOnEquals = false;
             } else {
-                // Append to existing number
+                // Append to existing digit string
                 multipleDigitStr += digitStr;
             }
             refreshMainDisplay(Number(multipleDigitStr).toString());
@@ -87,7 +87,7 @@ function Application() {
     var displayOperation = function (operation) {
         return function () {
             if (multipleDigitStr.length !== 0) {
-                // only push to equation if there is number to push.
+                // only push to equation if there is a digit string to push.
                 equation.push(multipleDigitStr);
 
                 multipleDigitStr = "0";
@@ -116,6 +116,21 @@ function Application() {
         operationElementsArray.forEach(displayCurrentOperationOnClick);
     };
 
+    var displayDecimalPointOnClick = function () {
+        document.getElementById('decimal-point').onclick = function () {
+            if (clickedOnEquals) {
+                // Don't append to existing digit string as this should be the previous result
+                multipleDigitStr = "0.";
+                clickedOnEquals = false;
+            } else {
+                // Append to existing digit string
+                multipleDigitStr += ".";
+            }
+            refreshMainDisplay(multipleDigitStr);
+        };
+
+    };
+
     var displayResultOnClick = function () {
         var equalsElement = document.getElementById('equals');
         equalsElement.onclick = function () {
@@ -135,6 +150,7 @@ function Application() {
         refreshMainDisplay("0");
         displayEachNumberOnClick();
         displayEachOperationOnClick();
+        displayDecimalPointOnClick();
         displayResultOnClick();
     };
 }
