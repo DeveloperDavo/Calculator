@@ -23,7 +23,7 @@ describe("application", function () {
             '<button class="number" id="3">3</button>' +
             '<button class="number" id="0">0</button>' +
             '<button id="decimal-point">.</button>' +
-            '<button class="operation" id="equals">=</button>'
+            '<button id="equals">=</button>'
         );
         document.body.appendChild(container);
         application = new Application(document);
@@ -187,14 +187,20 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toEqual('7');
     });
 
-    it('should keep displaying 0 if operation is clicked first', function () {
+    it('should display operator upon first click', function () {
         application.init();
 
         document.getElementById('+').click();
-        expect(document.getElementById('display').textContent).toEqual('0');
+        expect(document.getElementById('display').textContent).toEqual('+');
 
         document.getElementById('-').click();
-        expect(document.getElementById('display').textContent).toEqual('0');
+        expect(document.getElementById('display').textContent).toEqual('-');
+
+        document.getElementById('*').click();
+        expect(document.getElementById('display').textContent).toEqual('*');
+
+        document.getElementById('/').click();
+        expect(document.getElementById('display').textContent).toEqual('/');
     });
 
     it('should display decimal number', function () {
@@ -287,6 +293,16 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toBe('0.');
     });
 
+    it('should calculate result when operation is clicked before a number', function () {
+        application.init();
+
+        document.getElementById('-').click();
+        document.getElementById('3').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('display').textContent).toBe('-3');
+
+    });
 
 });
 

@@ -15,11 +15,11 @@ function Application() {
     var clickedOnEquals = false;
 
     var initialiseDisplay = function () {
-        document.getElementById('display').innerHTML = "0";
+        currentNumberInput = "0";
+        document.getElementById('display').innerHTML = currentNumberInput;
     };
 
     var tearDown = function () {
-        currentNumberInput = "";
         equation = [];
         clickedOnEquals = false;
         initialiseDisplay();
@@ -94,10 +94,9 @@ function Application() {
 
                 currentNumberInput = "";
 
-                // only display operation if there is number beforehand
-                document.getElementById('display').innerHTML = operation;
             }
             equation.push(operation);
+            document.getElementById('display').innerHTML = operation;
         }
     };
 
@@ -151,13 +150,13 @@ function Application() {
     var clearEntryOnClick = function () {
         document.getElementById('clear-entry').onclick = function () {
             if (currentNumberInput.length !== 0) {
-                // entry is a number, so it has not yet been pushed to the equation array.
+                // entry is a number, so we need to remove it
                 currentNumberInput = "";
             } else {
-                // entry is an operation, so remove it from the equation array.
+                // entry is an operation, so we need to remove it from the equation array.
                 equation.splice(equation.length - 1);
             }
-            initialiseDisplay();
+            document.getElementById('display').innerHTML = "0";
         };
     };
 
