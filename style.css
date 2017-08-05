@@ -4,6 +4,7 @@
 
 table {
     margin: 10% auto;
+    border: 1px solid black;
 }
 
 td {
@@ -19,7 +20,8 @@ button {
     font-size: 20px;
 }
 
-.display {
+#displays {
+    border: 1px solid black;
     font-family: monospace;
     text-align: right;
 }
