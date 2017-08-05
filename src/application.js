@@ -20,7 +20,11 @@ var spliceAroundIndex = function (array, index) {
 function Application() {
     var DECIMAL_POINT = ".";
     var EQUALS_SYMBOL = "=";
-    var OPERATIONS = ["+", "-", "/", "*"];
+    var PLUS_SYMBOL = "+";
+    var MINUS_SYMBOL = "-";
+    var DIVIDE_SYMBOL = "/";
+    var MULTIPLY_SYMBOL = "*";
+    var OPERATIONS = [PLUS_SYMBOL, MINUS_SYMBOL, DIVIDE_SYMBOL, MULTIPLY_SYMBOL];
 
     var multipleDigitStr = "";
     var equation = [];
@@ -225,6 +229,9 @@ function Application() {
         };
     };
 
+    this.getEquation = function () {
+        return equation;
+    };
 
     this.init = function () {
         refreshDisplay("0");
