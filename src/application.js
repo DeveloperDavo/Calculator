@@ -20,7 +20,18 @@ var spliceAroundIndex = function (array, index) {
 function Application() {
     var EQUALS_SYMBOL = "=";
 
+    var PLUS_SYMBOL = "+";
+    var MINUS_SYMBOL = "-";
+    var DIVIDE_SYMBOL = "/";
+    var MULTIPLY_SYMBOL = "*";
+
+    var OPERATIONS = [PLUS_SYMBOL, MINUS_SYMBOL, DIVIDE_SYMBOL, MULTIPLY_SYMBOL];
+
     var history = "";
+
+    var isOperation = function (text) {
+        return OPERATIONS.indexOf(text) !== -1;
+    };
 
     var refreshMainDisplay = function (textToDisplay) {
         document.getElementById('display').innerHTML = textToDisplay;
@@ -49,9 +60,9 @@ function Application() {
     // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
     var displayOperation = function (operation) {
         return function () {
-            // set history to 0 if it is empty
-            if (history.length === 0) {
-                history = "0";
+
+            if (isOperation(history[history.length - 1])) {
+                history = history.substring(0, history.length - 1);
             }
 
             history += operation;

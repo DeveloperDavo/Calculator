@@ -141,6 +141,18 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toEqual('42');
     });
 
+
+    it('should replace existing operation with new one in history', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('/').click();
+        document.getElementById('-').click();
+
+        expect(document.getElementById('history').textContent).toEqual('2-');
+
+    });
+
 });
 
 function fixture(html) {
