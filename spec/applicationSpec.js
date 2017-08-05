@@ -34,6 +34,38 @@ describe("application", function () {
         document.body.removeChild(container);
     });
 
+    it('should show 3 in display', function () {
+        application.init();
+
+        document.getElementById('3').click();
+
+        expect(document.getElementById('display').textContent).toEqual('3');
+    });
+
+    it('should show 9 in display', function () {
+        application.init();
+
+        document.getElementById('9').click();
+
+        expect(document.getElementById('display').textContent).toEqual('9');
+    });
+
+    it('should show multiple digits in display', function () {
+        application.init();
+
+        document.getElementById('7').click();
+        document.getElementById('5').click();
+
+        expect(document.getElementById('display').textContent).toEqual('75');
+
+        document.getElementById('+').click();
+        document.getElementById('9').click();
+        document.getElementById('6').click();
+
+        expect(document.getElementById('display').textContent).toEqual('96');
+
+    });
+
     it('should show new history after equals operation', function () {
         application.init();
 

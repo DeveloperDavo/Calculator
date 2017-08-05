@@ -106,16 +106,13 @@ function Application() {
     var displayCurrentNumber = function (digitStr) {
         return function () {
             if (clickedOnEquals) {
-                // Don't append to existing digit string as this should be the previous result
-                multipleDigitStr = digitStr;
                 history = "";
                 clickedOnEquals = false;
-            } else {
-                // Append to existing digit string
-                multipleDigitStr += digitStr;
             }
             history += digitStr;
-            refreshDisplay(removeLeadingZeroes(multipleDigitStr));
+            var operationsRegEx = new RegExp(/\+|\-|\*|\//g);
+            multipleDigitStr = history.split(operationsRegEx).pop();
+            refreshDisplay(multipleDigitStr);
         }
     };
 
