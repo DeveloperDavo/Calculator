@@ -16,6 +16,12 @@ button {
     padding: 10px;
     font-family: serif;
     font-size: 20px;
+    background-color: black;
+    color: white;
+}
+
+.clear-operation {
+    background-color: crimson;
 }
 
 #displays {
