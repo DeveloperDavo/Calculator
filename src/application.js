@@ -18,6 +18,7 @@ var spliceAroundIndex = function (array, index) {
 };
 
 function Application() {
+    var EQUALS_SYMBOL = "=";
 
     var history = "";
 
@@ -76,9 +77,24 @@ function Application() {
         operationElementsArray.forEach(displayCurrentOperationOnClick);
     };
 
+    var displayResultOnClick = function () {
+        var equalsElement = document.getElementById('equals');
+        equalsElement.onclick = function () {
+
+            var result = new ResultCalculator().calculateResult(history);
+            
+            history += EQUALS_SYMBOL;
+            history += result;
+
+            refreshDisplay("");
+
+        };
+    };
     this.init = function () {
+
         refreshDisplay("0");
         displayEachNumberOnClick();
         displayEachOperationOnClick();
+        displayResultOnClick();
     };
 }

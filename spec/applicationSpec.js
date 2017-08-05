@@ -117,6 +117,19 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toEqual('40');
     });
 
+    it('should show result in history', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('+').click();
+        document.getElementById('4').click();
+        document.getElementById('0').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('history').textContent).toEqual('2+40=42');
+    });
+
+
 });
 
 function fixture(html) {
