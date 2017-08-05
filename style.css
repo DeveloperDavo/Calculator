@@ -19,8 +19,15 @@ button {
     font-size: 20px;
 }
 
-#display {
+.display {
     font-family: monospace;
-    font-size: 40px;
     text-align: right;
+}
+
+#display {
+    font-size: 40px;
+}
+
+#history {
+    font-size: 18px;
 }
