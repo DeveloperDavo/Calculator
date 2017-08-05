@@ -316,7 +316,27 @@ describe("application", function () {
         expect(document.getElementById('history').textContent).toEqual('6+8');
     });
 
-    it('should clear all', function () {
+    it('should clear history after clicking clear all', function () {
+        application.init();
+
+        document.getElementById('4').click();
+        document.getElementById('*').click();
+        document.getElementById('6').click();
+        document.getElementById('all-clear').click();
+
+        expect(document.getElementById('history').textContent).toBe('0');
+
+        document.getElementById('4').click();
+        document.getElementById('-').click();
+        document.getElementById('5').click();
+        expect(document.getElementById('history').textContent).toBe('4-5');
+
+        document.getElementById('equals').click();
+        expect(document.getElementById('history').textContent).toBe('4-5=-1');
+
+    });
+
+    it('should clear display after clicking clear all', function () {
         application.init();
 
         document.getElementById('2').click();
@@ -325,12 +345,10 @@ describe("application", function () {
         document.getElementById('all-clear').click();
 
         expect(document.getElementById('display').textContent).toBe('0');
-        expect(document.getElementById('history').textContent).toBe('0');
 
         document.getElementById('2').click();
         document.getElementById('/').click();
         document.getElementById('3').click();
-        expect(document.getElementById('history').textContent).toBe('2/3');
 
         document.getElementById('equals').click();
         expect(document.getElementById('display').textContent).toBeCloseTo('0.67', 2);
@@ -348,7 +366,7 @@ describe("application", function () {
 
     });
 
-    it('should clear operation entry', function () {
+    it('should clear operation in display when clearing entry', function () {
         application.init();
 
         document.getElementById('2').click();
@@ -356,26 +374,33 @@ describe("application", function () {
         document.getElementById('clear-entry').click();
 
         expect(document.getElementById('display').textContent).toBe('0');
-        expect(document.getElementById('history').textContent).toBe('2');
 
-    });
-
-    it('should still calculate result after clearing operation entry', function () {
-        application.init();
-
-        document.getElementById('2').click();
-        document.getElementById('/').click();
-        document.getElementById('clear-entry').click();
         document.getElementById('-').click();
         document.getElementById('3').click();
         document.getElementById('equals').click();
 
         expect(document.getElementById('display').textContent).toBe('-1');
+
+    });
+
+    it('should clear operation in history entry when clearing entry', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('/').click();
+        document.getElementById('clear-entry').click();
+
+        expect(document.getElementById('history').textContent).toBe('2');
+
+        document.getElementById('-').click();
+        document.getElementById('3').click();
+        document.getElementById('equals').click();
+
         expect(document.getElementById('history').textContent).toBe('2-3=-1');
 
     });
 
-    it('should still display result and history after clearing operation entry after equals', function () {
+    it('should still display result when clearing an operation after equals', function () {
         application.init();
 
         document.getElementById('2').click();
@@ -389,30 +414,26 @@ describe("application", function () {
         document.getElementById('equals').click();
 
         expect(document.getElementById('display').textContent).toBe('1');
-        expect(document.getElementById('history').textContent).toBe('-1+2=1');
 
     });
 
-    it('should clear number entry', function () {
+    it('should still display history when clearing an operation after equals', function () {
         application.init();
-
+        
         document.getElementById('2').click();
-        document.getElementById('/').click();
+        document.getElementById('-').click();
         document.getElementById('3').click();
+        document.getElementById('equals').click();
+        document.getElementById('-').click();
         document.getElementById('clear-entry').click();
-
-        expect(document.getElementById('display').textContent).toBe('0');
-        expect(document.getElementById('history').textContent).toBe('2/');
-
-        document.getElementById('4').click();
+        document.getElementById('+').click();
+        document.getElementById('2').click();
         document.getElementById('equals').click();
 
-        expect(document.getElementById('display').textContent).toBe('0.5');
-        expect(document.getElementById('history').textContent).toBe('2/4=0.5');
-
+        expect(document.getElementById('history').textContent).toBe('-1+2=1');
     });
 
-    it('should clear multi digit entry', function () {
+    it('should clear digits in display entry when clearing entry', function () {
         application.init();
 
         document.getElementById('2').click();
@@ -422,13 +443,29 @@ describe("application", function () {
         document.getElementById('clear-entry').click();
 
         expect(document.getElementById('display').textContent).toBe('0');
-        expect(document.getElementById('history').textContent).toBe('2+');
 
         document.getElementById('4').click();
         document.getElementById('0').click();
         document.getElementById('equals').click();
 
         expect(document.getElementById('display').textContent).toBe('42');
+    });
+
+    it('should clear digits in history entry when clearing entry', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('+').click();
+        document.getElementById('2').click();
+        document.getElementById('0').click();
+        document.getElementById('clear-entry').click();
+
+        expect(document.getElementById('history').textContent).toBe('2+');
+
+        document.getElementById('4').click();
+        document.getElementById('0').click();
+        document.getElementById('equals').click();
+
         expect(document.getElementById('history').textContent).toBe('2+40=42');
 
     });
