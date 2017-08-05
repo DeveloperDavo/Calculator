@@ -1,9 +1,3 @@
-    it('should display value of 0 upon initialisation', function () {
-        application.init();
-
-        expect(document.getElementById('display').textContent).toEqual('0');
-    });
-
     it('should display result of multiple chained operations', function () {
         application.init();
 

@@ -164,6 +164,12 @@ describe("application", function () {
 
     });
 
+    it('should show 0 in history upon initialisation', function () {
+        application.init();
+
+        expect(document.getElementById('history').textContent).toEqual('0');
+    });
+
 });
 
 function fixture(html) {

@@ -38,7 +38,11 @@ function Application() {
     };
 
     var refreshHistory = function () {
-        document.getElementById('history').innerHTML = history;
+        var historyInnerHtml = history;
+        if (history.length === 0) {
+            historyInnerHtml = "0";
+        }
+        document.getElementById('history').innerHTML = historyInnerHtml;
     };
 
     var refreshDisplay = function (textToDisplay) {
@@ -105,6 +109,7 @@ function Application() {
 
         };
     };
+
     this.init = function () {
         refreshDisplay("0");
         displayEachNumberOnClick();
