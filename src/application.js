@@ -92,6 +92,10 @@ function Application() {
         var equalsElement = document.getElementById('equals');
         equalsElement.onclick = function () {
 
+            if (isOperation(history[history.length - 1])) {
+                return;
+            }
+
             var result = new ResultCalculator().calculateResult(history);
 
             history += EQUALS_SYMBOL;
@@ -102,7 +106,6 @@ function Application() {
         };
     };
     this.init = function () {
-
         refreshDisplay("0");
         displayEachNumberOnClick();
         displayEachOperationOnClick();

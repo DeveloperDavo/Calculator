@@ -153,6 +153,17 @@ describe("application", function () {
 
     });
 
+    it('should not replace existing operation with equals in history', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('/').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('history').textContent).toEqual('2/');
+
+    });
+
 });
 
 function fixture(html) {
