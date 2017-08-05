@@ -8,6 +8,7 @@ table {
 
 td {
     height: 100%;
+    width: 50px;
 }
 
 button {
@@ -16,5 +17,4 @@ button {
     padding: 10px;
     font-family: serif;
     font-size: 20px;
-
 }
