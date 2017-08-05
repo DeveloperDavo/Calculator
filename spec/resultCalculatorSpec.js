@@ -23,4 +23,8 @@ describe("resultCalculator", function () {
         expect(resultCalculator.calculateResult("6/3=")).toEqual('2');
     });
 
+    it('should handle decimals', function () {
+        expect(resultCalculator.calculateResult("2.1-0.2")).toBeCloseTo('1.9');
+    });
+
 });

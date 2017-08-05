@@ -42,10 +42,10 @@ function ResultCalculator() {
 
     this.calculateResult = function (history) {
         // add "|" either side of each number
-        var equationString = history.replace(new RegExp(/(\d+)/g), "|$1|");
+        var equationStr = history.replace(new RegExp(/((\d+(\.?\d+)?))/g), "|$1|");
 
         // convert equationStr to array
-        var equation = equationString.split("|");
+        var equation = equationStr.split("|");
 
         // remove first entry because it is empty
         equation.shift();

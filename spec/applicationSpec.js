@@ -236,7 +236,6 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toEqual('2.1');
     });
 
-
 });
 
 function fixture(html) {
