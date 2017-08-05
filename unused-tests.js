@@ -4,73 +4,7 @@
         expect(document.getElementById('display').textContent).toEqual('0');
     });
 
-    it('should display value of button 3', function () {
-        application.init();
-
-        document.getElementById('3').click();
-        expect(document.getElementById('display').textContent).toEqual('3');
-    });
-
-    it('should display value of button 9', function () {
-        application.init();
-
-        document.getElementById('9').click();
-        expect(document.getElementById('display').textContent).toEqual('9');
-    });
-
-    it('should display value of two consecutive numbers', function () {
-        application.init();
-
-        document.getElementById('7').click();
-        document.getElementById('5').click();
-
-        expect(document.getElementById('display').textContent).toEqual('75');
-    });
-
-    it('should display + operation', function () {
-        application.init();
-
-        document.getElementById('8').click();
-        document.getElementById('+').click();
-
-        expect(document.getElementById('display').textContent).toEqual('+');
-    });
-
-    it('should display current number after addition operation', function () {
-        application.init();
-
-        document.getElementById('2').click();
-        document.getElementById('+').click();
-        document.getElementById('4').click();
-
-        expect(document.getElementById('display').textContent).toEqual('4');
-    });
-
-    it('should display result of adding two numbers', function () {
-        application.init();
-
-        document.getElementById('2').click();
-        document.getElementById('0').click();
-        document.getElementById('+').click();
-        document.getElementById('1').click();
-        document.getElementById('0').click();
-        document.getElementById('equals').click();
-
-        expect(document.getElementById('display').textContent).toEqual('30');
-    });
-
-    it('should display result of subtracting one number from another', function () {
-        application.init();
-
-        document.getElementById('2').click();
-        document.getElementById('0').click();
-        document.getElementById('-').click();
-        document.getElementById('1').click();
-        document.getElementById('0').click();
-        document.getElementById('equals').click();
-
-        expect(document.getElementById('display').textContent).toEqual('10');
-    });
+    // TODO: should display result
 
     it('should display result of multiplying two numbers', function () {
         application.init();

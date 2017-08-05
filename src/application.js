@@ -110,8 +110,10 @@ function Application() {
                 clickedOnEquals = false;
             }
             history += digitStr;
+
             var operationsRegEx = new RegExp(/\+|\-|\*|\//g);
             multipleDigitStr = history.split(operationsRegEx).pop();
+
             refreshDisplay(multipleDigitStr);
         }
     };
