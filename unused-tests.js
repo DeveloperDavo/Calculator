@@ -1,18 +1,3 @@
-    it('should display result of multiple chained operations', function () {
-        application.init();
-
-        document.getElementById('2').click();
-        document.getElementById('0').click();
-        document.getElementById('-').click();
-        document.getElementById('1').click();
-        document.getElementById('0').click();
-        document.getElementById('+').click();
-        document.getElementById('6').click();
-        document.getElementById('equals').click();
-
-        expect(document.getElementById('display').textContent).toEqual('16');
-    });
-
     it('should display new number after equals operation', function () {
         application.init();
 
