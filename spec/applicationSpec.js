@@ -227,6 +227,9 @@ describe("application", function () {
         application.init();
 
         document.getElementById('decimal-point').click();
+
+        expect(document.getElementById('display').textContent).toEqual('0.');
+
         document.getElementById('3').click();
         document.getElementById('-').click();
         document.getElementById('2').click();

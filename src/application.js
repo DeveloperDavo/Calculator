@@ -35,6 +35,15 @@ function Application() {
         return OPERATIONS.indexOf(text) !== -1;
     };
 
+    var doesHistoryContainEquals = function () {
+        var equalsRegExp = new RegExp(/\=/g);
+        return history.match(equalsRegExp);
+    };
+
+    var getLastEntityInHistory = function () {
+        var operationsRegEx = new RegExp(/\+|\-|\*|\//g);
+        return history.split(operationsRegEx).pop();
+    };
     var refreshMainDisplay = function (textToDisplay) {
         document.getElementById('display').innerHTML = textToDisplay;
     };
@@ -52,10 +61,6 @@ function Application() {
         refreshHistory();
     };
 
-    var doesHistoryContainEquals = function () {
-        var equalsRegExp = new RegExp(/\=/g);
-        return history.match(equalsRegExp);
-    };
 // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
     var displayCurrentNumber = function (digitStr) {
         return function () {
@@ -66,9 +71,7 @@ function Application() {
 
             history += digitStr;
 
-            var operationsRegEx = new RegExp(/\+|\-|\*|\//g);
-
-            refreshDisplay(history.split(operationsRegEx).pop());
+            refreshDisplay(getLastEntityInHistory());
         }
     };
 
@@ -112,7 +115,7 @@ function Application() {
                 history = "0";
             }
             history += DECIMAL_POINT;
-            refreshDisplay("");
+            refreshDisplay(getLastEntityInHistory());
         };
 
     };
