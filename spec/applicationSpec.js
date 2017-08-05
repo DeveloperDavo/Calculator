@@ -34,38 +34,6 @@ describe("application", function () {
         document.body.removeChild(container);
     });
 
-    it('should show 3 in display', function () {
-        application.init();
-
-        document.getElementById('3').click();
-
-        expect(document.getElementById('display').textContent).toEqual('3');
-    });
-
-    it('should show 9 in display', function () {
-        application.init();
-
-        document.getElementById('9').click();
-
-        expect(document.getElementById('display').textContent).toEqual('9');
-    });
-
-    it('should show multiple digits in display', function () {
-        application.init();
-
-        document.getElementById('7').click();
-        document.getElementById('5').click();
-
-        expect(document.getElementById('display').textContent).toEqual('75');
-
-        document.getElementById('+').click();
-        document.getElementById('9').click();
-        document.getElementById('6').click();
-
-        expect(document.getElementById('display').textContent).toEqual('96');
-
-    });
-
     it('should show new history after equals operation', function () {
         application.init();
 
@@ -198,6 +166,52 @@ describe("application", function () {
 
         expect(document.getElementById('history').textContent).toBe('2+40=42');
 
+    });
+
+    it('should show 3 in display', function () {
+        application.init();
+
+        document.getElementById('3').click();
+
+        expect(document.getElementById('display').textContent).toEqual('3');
+    });
+
+    it('should show 9 in display', function () {
+        application.init();
+
+        document.getElementById('9').click();
+
+        expect(document.getElementById('display').textContent).toEqual('9');
+    });
+
+    it('should show multiple digits in display', function () {
+        application.init();
+
+        document.getElementById('7').click();
+        document.getElementById('5').click();
+
+        expect(document.getElementById('display').textContent).toEqual('75');
+
+    });
+
+    it('should show operation in display', function () {
+        application.init();
+
+        document.getElementById('8').click();
+        document.getElementById('+').click();
+
+        expect(document.getElementById('display').textContent).toEqual('+');
+    });
+
+    it('should show multiple digits in display after operation', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('+').click();
+        document.getElementById('4').click();
+        document.getElementById('0').click();
+
+        expect(document.getElementById('display').textContent).toEqual('40');
     });
 
 });
