@@ -18,3 +18,9 @@ button {
     font-family: serif;
     font-size: 20px;
 }
+
+#display {
+    font-family: monospace;
+    font-size: 40px;
+    text-align: right;
+}
