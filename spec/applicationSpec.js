@@ -170,6 +170,12 @@ describe("application", function () {
         expect(document.getElementById('history').textContent).toEqual('0');
     });
 
+    it('should show 0 in display upon initialisation', function () {
+        application.init();
+
+        expect(document.getElementById('display').textContent).toEqual('0');
+    });
+
 });
 
 function fixture(html) {
