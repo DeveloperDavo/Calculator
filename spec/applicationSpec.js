@@ -223,6 +223,20 @@ describe("application", function () {
 
     });
 
+    it('should show decimal number in display', function () {
+        application.init();
+
+        document.getElementById('decimal-point').click();
+        document.getElementById('3').click();
+        document.getElementById('-').click();
+        document.getElementById('2').click();
+        document.getElementById('decimal-point').click();
+        document.getElementById('1').click();
+
+        expect(document.getElementById('display').textContent).toEqual('2.1');
+    });
+
+
 });
 
 function fixture(html) {
