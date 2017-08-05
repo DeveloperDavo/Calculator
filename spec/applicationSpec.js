@@ -192,6 +192,25 @@ describe("application", function () {
         expect(document.getElementById('history').textContent).toEqual('1');
     });
 
+    it('should chain operation in history after result', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('+').click();
+        document.getElementById('4').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('history').textContent).toEqual('2+4=6');
+
+        document.getElementById('+').click();
+        document.getElementById('1').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('history').textContent).toEqual('6+1=7');
+    });
+
+
+
 });
 
 function fixture(html) {

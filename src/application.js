@@ -28,6 +28,7 @@ function Application() {
     var OPERATIONS = [PLUS_SYMBOL, MINUS_SYMBOL, DIVIDE_SYMBOL, MULTIPLY_SYMBOL];
 
     var history = "";
+    var result = "";
 
     var isOperation = function (text) {
         return OPERATIONS.indexOf(text) !== -1;
@@ -50,9 +51,18 @@ function Application() {
         refreshHistory();
     };
 
-    // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
+    var doesHistoryContainEquals = function () {
+        var equalsRegExp = new RegExp(/\=/g);
+        return history.match(equalsRegExp);
+    };
+// https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
     var displayCurrentNumber = function (digitStr) {
         return function () {
+
+            if (doesHistoryContainEquals()) {
+                history = "";
+            }
+
             history += digitStr;
 
             var operationsRegEx = new RegExp(/\+|\-|\*|\//g);
@@ -64,6 +74,9 @@ function Application() {
     // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
     var displayOperation = function (operation) {
         return function () {
+            if (doesHistoryContainEquals()) {
+                history = result;
+            }
 
             if (isOperation(history[history.length - 1])) {
                 history = history.substring(0, history.length - 1);
@@ -100,14 +113,12 @@ function Application() {
                 return;
             }
 
-            var result = new ResultCalculator().calculateResult(history);
+            result = new ResultCalculator().calculateResult(history);
 
             history += EQUALS_SYMBOL;
             history += result;
 
             refreshDisplay(result);
-            history = "";
-
         };
     };
 

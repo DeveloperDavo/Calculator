@@ -1,21 +1,3 @@
-        it('should perform more than one operation', function () {
-        application.init();
-
-        document.getElementById('2').click();
-        document.getElementById('+').click();
-        document.getElementById('4').click();
-        document.getElementById('equals').click();
-
-        expect(document.getElementById('display').textContent).toEqual('6');
-
-        document.getElementById('1').click();
-        document.getElementById('-').click();
-        document.getElementById('1').click();
-        document.getElementById('equals').click();
-
-        expect(document.getElementById('display').textContent).toEqual('0');
-    });
-
     it('should perform addition on existing result', function () {
         application.init();
 
