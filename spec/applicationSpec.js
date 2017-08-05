@@ -146,7 +146,6 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toEqual('12');
     });
 
-
     it('should replace existing operation with new one in history', function () {
         application.init();
 
@@ -179,6 +178,18 @@ describe("application", function () {
         application.init();
 
         expect(document.getElementById('display').textContent).toEqual('0');
+    });
+
+    it('should show new number in history after equals operation', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('+').click();
+        document.getElementById('4').click();
+        document.getElementById('equals').click();
+        document.getElementById('1').click();
+
+        expect(document.getElementById('history').textContent).toEqual('1');
     });
 
 });

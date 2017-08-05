@@ -1,15 +1,3 @@
-    it('should display new number after equals operation', function () {
-        application.init();
-
-        document.getElementById('2').click();
-        document.getElementById('+').click();
-        document.getElementById('4').click();
-        document.getElementById('equals').click();
-        document.getElementById('1').click();
-
-        expect(document.getElementById('display').textContent).toEqual('1');
-    });
-
         it('should perform more than one operation', function () {
         application.init();
 

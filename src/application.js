@@ -106,6 +106,7 @@ function Application() {
             history += result;
 
             refreshDisplay(result);
+            history = "";
 
         };
     };
