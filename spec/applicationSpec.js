@@ -209,7 +209,19 @@ describe("application", function () {
         expect(document.getElementById('history').textContent).toEqual('6+1=7');
     });
 
+    it('should show decimal number in history', function () {
+        application.init();
 
+        document.getElementById('decimal-point').click();
+        document.getElementById('3').click();
+        document.getElementById('-').click();
+        document.getElementById('2').click();
+        document.getElementById('decimal-point').click();
+        document.getElementById('1').click();
+
+        expect(document.getElementById('history').textContent).toEqual('0.3-2.1');
+
+    });
 
 });
 

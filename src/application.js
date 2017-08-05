@@ -18,6 +18,7 @@ var spliceAroundIndex = function (array, index) {
 };
 
 function Application() {
+    var DECIMAL_POINT = ".";
     var EQUALS_SYMBOL = "=";
 
     var PLUS_SYMBOL = "+";
@@ -105,6 +106,17 @@ function Application() {
         operationElementsArray.forEach(displayCurrentOperationOnClick);
     };
 
+    var displayDecimalPointOnClick = function () {
+        document.getElementById('decimal-point').onclick = function () {
+            if (doesHistoryContainEquals() || history.length === 0) {
+                history = "0";
+            }
+            history += DECIMAL_POINT;
+            refreshDisplay("");
+        };
+
+    };
+
     var displayResultOnClick = function () {
         var equalsElement = document.getElementById('equals');
         equalsElement.onclick = function () {
@@ -126,6 +138,7 @@ function Application() {
         refreshDisplay("0");
         displayEachNumberOnClick();
         displayEachOperationOnClick();
+        displayDecimalPointOnClick();
         displayResultOnClick();
     };
 }
