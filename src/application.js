@@ -108,6 +108,7 @@ function Application() {
             if (clickedOnEquals) {
                 // Don't append to existing digit string as this should be the previous result
                 multipleDigitStr = digitStr;
+                history = "";
                 clickedOnEquals = false;
             } else {
                 // Append to existing digit string
@@ -124,6 +125,7 @@ function Application() {
             if (clickedOnEquals) {
                 // reuse current result
                 history = multipleDigitStr;
+                clickedOnEquals = false;
             }
 
             // only push digits to equation if the equation is empty or the last part of the equation is an operation.
@@ -193,7 +195,6 @@ function Application() {
 
             refreshDisplay(multipleDigitStr);
 
-            history = "";
             equation = [];
             clickedOnEquals = true;
         };
