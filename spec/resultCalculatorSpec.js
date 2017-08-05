@@ -11,9 +11,16 @@ describe("resultCalculator", function () {
         expect(resultCalculator.calculateResult("20+10=")).toEqual('30');
     });
 
-    it('should display result of subtracting one number from another', function () {
+    it('should subtract one number from another', function () {
         expect(resultCalculator.calculateResult("20-10=")).toEqual('10');
     });
 
+    it('should multiply two numbers', function () {
+        expect(resultCalculator.calculateResult("2*3=")).toEqual('6');
+    });
+
+    it('should divide one into another', function () {
+        expect(resultCalculator.calculateResult("6/3=")).toEqual('2');
+    });
 
 });

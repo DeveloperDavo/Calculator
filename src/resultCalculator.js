@@ -1,6 +1,28 @@
 'use strict';
 
+var spliceAroundIndex = function (array, index) {
+    array.splice(index + 1, 1);
+    array.splice(index - 1, 1);
+};
+
+
 function ResultCalculator() {
+    /**
+     * eg. Replaces [2, *, 3, +, 4] with [6, +, 4]
+     */
+    var squashMultiplicationsAndDivisions = function (equation) {
+        for (var i = 0; i < equation.length; i++) {
+            if (equation[i] === "*") {
+                equation[i] = Number(equation[i - 1]) * Number(equation[i + 1]);
+                spliceAroundIndex(equation, i);
+            } else if (equation[i] === "/") {
+                equation[i] = Number(equation[i - 1]) / Number(equation[i + 1]);
+                spliceAroundIndex(equation, i);
+            }
+        }
+        return equation;
+    };
+
     /**
      *  eg. The result from [2, +, 4, -, 1] is 1
      */
@@ -27,6 +49,8 @@ function ResultCalculator() {
 
         // remove first entry because it is empty
         equation.shift();
+
+        equation = squashMultiplicationsAndDivisions(equation);
 
         return addAndSubtractResult(equation).toString();
     };

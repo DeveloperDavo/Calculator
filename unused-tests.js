@@ -4,29 +4,6 @@
         expect(document.getElementById('display').textContent).toEqual('0');
     });
 
-    // TODO: should display result
-
-    it('should display result of multiplying two numbers', function () {
-        application.init();
-
-        document.getElementById('2').click();
-        document.getElementById('*').click();
-        document.getElementById('3').click();
-        document.getElementById('equals').click();
-
-        expect(document.getElementById('display').textContent).toEqual('6');
-    });
-
-    it('should display result of dividing one number by another', function () {
-        application.init();
-
-        document.getElementById('6').click();
-        document.getElementById('/').click();
-        document.getElementById('3').click();
-        document.getElementById('equals').click();
-
-        expect(document.getElementById('display').textContent).toEqual('2');
-    });
     it('should display result of multiple chained operations', function () {
         application.init();
 
