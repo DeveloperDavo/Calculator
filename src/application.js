@@ -82,11 +82,11 @@ function Application() {
         equalsElement.onclick = function () {
 
             var result = new ResultCalculator().calculateResult(history);
-            
+
             history += EQUALS_SYMBOL;
             history += result;
 
-            refreshDisplay("");
+            refreshDisplay(result);
 
         };
     };
