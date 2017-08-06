@@ -104,7 +104,6 @@ function Application() {
             history += DECIMAL_POINT;
             refreshDisplay(getLastEntityInHistory());
         };
-
     };
 
     var getResultToDisplay = function () {
@@ -120,8 +119,7 @@ function Application() {
     };
 
     var displayResultOnClick = function () {
-        var equalsElement = document.getElementById('equals');
-        equalsElement.onclick = function () {
+        document.getElementById('equals').onclick = function () {
 
             if (history === "0" || isOperation(history[history.length - 1])) {
                 return;
@@ -144,6 +142,18 @@ function Application() {
         };
     };
 
+    var clearEntryOnClick = function () {
+        document.getElementById('clear-entry').onclick = function () {
+
+            if (isOperation(history[history.length - 1])) {
+                history = history.substring(0, history.length - 1)
+            }
+
+            refreshDisplay("");
+        };
+    };
+
+
     this.init = function () {
         refreshDisplay("0");
         displayEachNumberOnClick();
@@ -151,5 +161,6 @@ function Application() {
         displayDecimalPointOnClick();
         displayResultOnClick();
         clearAllOnClick();
+        clearEntryOnClick();
     };
 }

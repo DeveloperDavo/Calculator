@@ -362,6 +362,21 @@ describe("application", function () {
 
     });
 
+    it('should clear operation in history when clicking clearing entry', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('/').click();
+        document.getElementById('clear-entry').click();
+
+        expect(document.getElementById('history').textContent).toBe('2');
+
+        document.getElementById('-').click();
+        document.getElementById('3').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('history').textContent).toBe('2-3=-1');
+    });
 
 });
 
