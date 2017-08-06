@@ -63,7 +63,7 @@ function Application() {
         refreshHistory();
     };
 
-// https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
+    // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
     var displayCurrentNumber = function (digitStr) {
         return function () {
 
@@ -71,7 +71,9 @@ function Application() {
                 history = "";
             }
 
-            history += digitStr;
+            if (document.getElementById('display').innerHTML.length < 10) {
+                history += digitStr;
+            }
 
             refreshDisplay(getLastEntityInHistory());
         }

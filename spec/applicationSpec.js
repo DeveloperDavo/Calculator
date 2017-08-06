@@ -240,6 +240,25 @@ describe("application", function () {
     });
 
 
+    it('should limit input to 10 digits in display', function () {
+        application.init();
+
+        document.getElementById('1').click();
+        document.getElementById('2').click();
+        document.getElementById('3').click();
+        document.getElementById('4').click();
+        document.getElementById('5').click();
+        document.getElementById('6').click();
+        document.getElementById('7').click();
+        document.getElementById('8').click();
+        document.getElementById('9').click();
+        document.getElementById('0').click();
+        document.getElementById('1').click();
+
+        expect(document.getElementById('display').textContent).toEqual('1234567890');
+
+    });
+
     it('should show last 10 chars in history when input is too large', function () {
         application.init();
 
