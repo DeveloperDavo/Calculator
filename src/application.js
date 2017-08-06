@@ -144,7 +144,7 @@ function Application() {
         document.getElementById('all-clear').onclick = function () {
             history = "";
             result = "";
-            refreshDisplay("");
+            refreshDisplay("0");
         };
     };
 

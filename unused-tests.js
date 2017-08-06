@@ -1,21 +1,3 @@
-    it('should clear display after clicking clear all', function () {
-        application.init();
-
-        document.getElementById('2').click();
-        document.getElementById('/').click();
-        document.getElementById('3').click();
-        document.getElementById('all-clear').click();
-
-        expect(document.getElementById('display').textContent).toBe('0');
-
-        document.getElementById('2').click();
-        document.getElementById('/').click();
-        document.getElementById('3').click();
-
-        document.getElementById('equals').click();
-        expect(document.getElementById('display').textContent).toBeCloseTo('0.67', 2);
-    });
-
     it('should still calculate result after clearing all first', function () {
         application.init();
 
