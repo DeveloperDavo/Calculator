@@ -349,6 +349,20 @@ describe("application", function () {
 
         expect(document.getElementById('display').textContent).toBe('0');
     });
+
+    it('should show new equation in history after clearing all', function () {
+        application.init();
+
+        document.getElementById('all-clear').click();
+        document.getElementById('+').click();
+        document.getElementById('7').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('history').textContent).toBe('0+7=7');
+
+    });
+
+
 });
 
 function fixture(html) {

@@ -1,15 +1,3 @@
-    it('should still calculate result after clearing all first', function () {
-        application.init();
-
-        document.getElementById('all-clear').click();
-        document.getElementById('+').click();
-        document.getElementById('7').click();
-        document.getElementById('equals').click();
-
-        expect(document.getElementById('display').textContent).toBe('7');
-
-    });
-
     it('should clear operation in display when clearing entry', function () {
         application.init();
 
