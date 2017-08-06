@@ -56,7 +56,7 @@ function Application() {
         if (historyInnerHtml.length === 0) {
             historyInnerHtml = "0";
         } else if (historyInnerHtml.length > MAX_CHARS_IN_HISTORY) {
-            var historyInnerHtml = "..." + historyInnerHtml.slice(- MAX_CHARS_IN_HISTORY);
+            var historyInnerHtml = "..." + historyInnerHtml.slice(-MAX_CHARS_IN_HISTORY);
         }
         document.getElementById('history').innerHTML = historyInnerHtml;
     };
@@ -127,15 +127,22 @@ function Application() {
 
     };
 
+    var getResultToDisplay = function () {
+        if (result.toString().length < MAX_DIGITS_IN_DISPLAY) {
+            return result;
+        }
+
+        var resultInExponentialNotation = result.toExponential();
+        var splitResult = resultInExponentialNotation.toString().split("e");
+        splitResult[0] = Math.round(splitResult[0]);
+
+        return splitResult[0] + "e" + splitResult[1];
+    };
     var displayResultOnClick = function () {
         var equalsElement = document.getElementById('equals');
         equalsElement.onclick = function () {
 
-            if (history.length === 0) {
-                return;
-            }
-
-            if (isOperation(history[history.length - 1])) {
+            if (history.length === 0 || isOperation(history[history.length - 1])) {
                 return;
             }
 
@@ -144,14 +151,7 @@ function Application() {
             history += EQUALS_SYMBOL;
             history += result;
 
-            if (result.toString().length < MAX_DIGITS_IN_DISPLAY ) {
-                refreshDisplay(result.toString());
-            } else {
-                var resultInExponentialNotation = result.toExponential();
-                var splittedResult = resultInExponentialNotation.toString().split("e");
-                splittedResult[0] = Math.round(splittedResult[0]);
-                refreshDisplay(splittedResult[0] + "e" + splittedResult[1]);
-            }
+            refreshDisplay(getResultToDisplay());
         };
     };
 
