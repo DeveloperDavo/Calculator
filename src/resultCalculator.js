@@ -37,7 +37,12 @@ function ResultCalculator() {
                 // TODO: throw error
             }
         }
-        return result;
+
+        if (result % 1 === 0) {
+            return result;
+        } else {
+            return result.toPrecision(9) / 1;
+        }
     };
 
     this.calculateResult = function (history) {
