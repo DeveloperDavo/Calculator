@@ -146,7 +146,7 @@ function Application() {
         };
     };
 
-    var doesHistoryOnlyContainANumber = function () {
+    var doesHistoryOnlyContainOneNumber = function () {
         return history === getLastNumberInHistory();
     };
 
@@ -155,7 +155,7 @@ function Application() {
 
             if (isOperation(history[history.length - 1])) {
                 history = history.substring(0, history.length - 1)
-            } else if (doesHistoryOnlyContainANumber()) {
+            } else if (doesHistoryOnlyContainOneNumber() || doesHistoryContainEquals()) {
                 history = "0";
             } else {
                 history = history.replace(getLastNumberInHistory(), "");

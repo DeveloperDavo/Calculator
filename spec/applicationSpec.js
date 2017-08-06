@@ -414,6 +414,18 @@ describe("application", function () {
 
     });
 
+    it('should show 0 in display after clicking on clear entry after result', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('-').click();
+        document.getElementById('3').click();
+        document.getElementById('equals').click();
+        document.getElementById('clear-entry').click();
+
+        expect(document.getElementById('display').textContent).toBe('0');
+    });
+
     it('should show correct result in history after negative result', function () {
         application.init();
 
@@ -427,6 +439,7 @@ describe("application", function () {
 
         expect(document.getElementById('history').textContent).toBe('-1+2=1');
     });
+
 
 });
 
