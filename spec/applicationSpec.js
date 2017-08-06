@@ -309,6 +309,14 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toEqual('1e+9');
     });
 
+    it('should show 0 in history when equals is clicked first', function () {
+        application.init();
+
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('history').textContent).toEqual('0');
+    });
+
 });
 
 function fixture(html) {

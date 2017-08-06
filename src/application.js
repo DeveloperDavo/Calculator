@@ -131,6 +131,10 @@ function Application() {
         var equalsElement = document.getElementById('equals');
         equalsElement.onclick = function () {
 
+            if (history.length === 0) {
+                return;
+            }
+
             if (isOperation(history[history.length - 1])) {
                 return;
             }
