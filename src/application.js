@@ -149,7 +149,8 @@ function Application() {
                 history = history.substring(0, history.length - 1)
             }
 
-            refreshDisplay("");
+            refreshDisplay(getLastEntityInHistory());
+
         };
     };
 
