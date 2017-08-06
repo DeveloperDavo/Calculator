@@ -18,6 +18,9 @@ var spliceAroundIndex = function (array, index) {
 };
 
 function Application() {
+    var MAX_CHARS_IN_HISTORY = 15;
+    var MAX_DIGITS_IN_DISPLAY = 10;
+
     var DECIMAL_POINT = ".";
     var EQUALS_SYMBOL = "=";
 
@@ -52,8 +55,8 @@ function Application() {
         var historyInnerHtml = history;
         if (historyInnerHtml.length === 0) {
             historyInnerHtml = "0";
-        } else if (historyInnerHtml.length > 10) {
-            var historyInnerHtml = "..." + historyInnerHtml.slice(-10);
+        } else if (historyInnerHtml.length > MAX_CHARS_IN_HISTORY) {
+            var historyInnerHtml = "..." + historyInnerHtml.slice(- MAX_CHARS_IN_HISTORY);
         }
         document.getElementById('history').innerHTML = historyInnerHtml;
     };
@@ -71,7 +74,7 @@ function Application() {
                 history = "";
             }
 
-            if (document.getElementById('display').innerHTML.length < 10) {
+            if (document.getElementById('display').innerHTML.length < MAX_DIGITS_IN_DISPLAY) {
                 history += digitStr;
             }
 
