@@ -362,7 +362,7 @@ describe("application", function () {
 
     });
 
-    it('should clear operation in history when clicking clear entry', function () {
+    it('should show previous number in history when clicking clear entry on an operation', function () {
         application.init();
 
         document.getElementById('2').click();
@@ -378,7 +378,7 @@ describe("application", function () {
         expect(document.getElementById('history').textContent).toBe('2-3=-1');
     });
 
-    it('should clear entry in display when clicking clear entry', function () {
+    it('should show previous number in display when clicking clear entry on an operation', function () {
         application.init();
 
         document.getElementById('2').click();
@@ -388,7 +388,7 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toBe('2');
     });
 
-    it('should clear digits in history entry when clicking clear entry', function () {
+    it('should show previous history when clicking clear entry on a number', function () {
         application.init();
 
         document.getElementById('2').click();
@@ -427,8 +427,6 @@ describe("application", function () {
 
         expect(document.getElementById('history').textContent).toBe('-1+2=1');
     });
-
-
 
 });
 
