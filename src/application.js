@@ -140,7 +140,11 @@ function Application() {
             history += EQUALS_SYMBOL;
             history += result;
 
-            refreshDisplay(result);
+            if (result.toString().length < MAX_DIGITS_IN_DISPLAY ) {
+                refreshDisplay(result.toString());
+            } else {
+                refreshDisplay(result.toExponential().toString())
+            }
         };
     };
 

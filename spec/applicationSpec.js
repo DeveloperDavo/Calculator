@@ -282,6 +282,25 @@ describe("application", function () {
         expect(document.getElementById('history').textContent).toEqual('...2345+1234567890');
     });
 
+    it('should show results large than 9 digits in exponential notation', function () {
+        application.init();
+
+        document.getElementById('9').click();
+        document.getElementById('9').click();
+        document.getElementById('9').click();
+        document.getElementById('9').click();
+        document.getElementById('9').click();
+        document.getElementById('9').click();
+        document.getElementById('9').click();
+        document.getElementById('9').click();
+        document.getElementById('9').click();
+        document.getElementById('+').click();
+        document.getElementById('1').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('display').textContent).toEqual('1e+9');
+    });
+
 });
 
 function fixture(html) {
