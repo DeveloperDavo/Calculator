@@ -239,6 +239,27 @@ describe("application", function () {
         expect(document.getElementById('display').textContent).toEqual('2.1');
     });
 
+
+    it('should show last 10 chars in history when input is too large', function () {
+        application.init();
+
+        document.getElementById('1').click();
+        document.getElementById('2').click();
+        document.getElementById('3').click();
+        document.getElementById('+').click();
+        document.getElementById('1').click();
+        document.getElementById('2').click();
+        document.getElementById('3').click();
+        document.getElementById('4').click();
+        document.getElementById('5').click();
+        document.getElementById('6').click();
+        document.getElementById('7').click();
+        document.getElementById('8').click();
+        document.getElementById('9').click();
+
+        expect(document.getElementById('history').textContent).toEqual('...+123456789');
+    });
+
 });
 
 function fixture(html) {

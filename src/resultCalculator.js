@@ -41,7 +41,7 @@ function ResultCalculator() {
         if (result % 1 === 0) {
             return result;
         } else {
-            return result.toPrecision(9) / 1;
+            return result.toPrecision(3) / 1;
         }
     };
 

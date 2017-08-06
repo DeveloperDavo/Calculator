@@ -50,8 +50,10 @@ function Application() {
 
     var refreshHistory = function () {
         var historyInnerHtml = history;
-        if (history.length === 0) {
+        if (historyInnerHtml.length === 0) {
             historyInnerHtml = "0";
+        } else if (historyInnerHtml.length > 10) {
+            var historyInnerHtml = "..." + historyInnerHtml.slice(-10);
         }
         document.getElementById('history').innerHTML = historyInnerHtml;
     };
