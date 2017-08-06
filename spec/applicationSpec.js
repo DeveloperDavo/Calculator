@@ -282,20 +282,28 @@ describe("application", function () {
         expect(document.getElementById('history').textContent).toEqual('...2345+1234567890');
     });
 
-    it('should show results large than 9 digits in exponential notation', function () {
+    it('should show results large than 9 digits rounded and in exponential notation in display', function () {
         application.init();
 
         document.getElementById('9').click();
-        document.getElementById('9').click();
-        document.getElementById('9').click();
-        document.getElementById('9').click();
-        document.getElementById('9').click();
-        document.getElementById('9').click();
-        document.getElementById('9').click();
-        document.getElementById('9').click();
-        document.getElementById('9').click();
+        document.getElementById('0').click();
+        document.getElementById('0').click();
+        document.getElementById('0').click();
+        document.getElementById('0').click();
+        document.getElementById('0').click();
+        document.getElementById('0').click();
+        document.getElementById('0').click();
+        document.getElementById('0').click();
         document.getElementById('+').click();
         document.getElementById('1').click();
+        document.getElementById('2').click();
+        document.getElementById('3').click();
+        document.getElementById('4').click();
+        document.getElementById('5').click();
+        document.getElementById('6').click();
+        document.getElementById('7').click();
+        document.getElementById('8').click();
+        document.getElementById('9').click();
         document.getElementById('equals').click();
 
         expect(document.getElementById('display').textContent).toEqual('1e+9');

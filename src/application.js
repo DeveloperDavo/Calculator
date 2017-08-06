@@ -143,7 +143,10 @@ function Application() {
             if (result.toString().length < MAX_DIGITS_IN_DISPLAY ) {
                 refreshDisplay(result.toString());
             } else {
-                refreshDisplay(result.toExponential().toString())
+                var resultInExponentialNotation = result.toExponential();
+                var splittedResult = resultInExponentialNotation.toString().split("e");
+                splittedResult[0] = Math.round(splittedResult[0]);
+                refreshDisplay(splittedResult[0] + "e" + splittedResult[1]);
             }
         };
     };
