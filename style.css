@@ -7,9 +7,10 @@ body {
 }
 
 table {
+    border-radius: 25px;
     margin: 10% auto;
-    border: 1px solid black;
     background-color: antiquewhite;
+    padding: 20px
 }
 
 td {
@@ -29,10 +30,16 @@ button {
     background-color: crimson;
 }
 
+.first-button-row {
+    margin-top: 10px;
+}
+
 #displays {
-    border: 1px solid black;
     font-family: monospace;
     text-align: right;
+    padding: 5px 5px;
+    background-color: white;
+    border-radius: 5px;
 }
 
 #display {
