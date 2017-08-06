@@ -122,6 +122,7 @@ function Application() {
 
         return splitResult[0] + "e" + splitResult[1];
     };
+
     var displayResultOnClick = function () {
         var equalsElement = document.getElementById('equals');
         equalsElement.onclick = function () {
@@ -139,11 +140,20 @@ function Application() {
         };
     };
 
+    var clearAllOnClick = function () {
+        document.getElementById('all-clear').onclick = function () {
+            history = "";
+            result = "";
+            refreshDisplay("");
+        };
+    };
+
     this.init = function () {
         refreshDisplay("0");
         displayEachNumberOnClick();
         displayEachOperationOnClick();
         displayDecimalPointOnClick();
         displayResultOnClick();
+        clearAllOnClick();
     };
 }

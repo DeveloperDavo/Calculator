@@ -327,6 +327,17 @@ describe("application", function () {
         expect(document.getElementById('history').textContent).toBe('0-3=-3');
 
     });
+
+    it('should show 0 in history after clicking clear all', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('/').click();
+        document.getElementById('3').click();
+        document.getElementById('all-clear').click();
+
+        expect(document.getElementById('history').textContent).toBe('0');
+    });
 });
 
 function fixture(html) {
