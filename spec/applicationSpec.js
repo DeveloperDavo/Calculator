@@ -406,7 +406,13 @@ describe("application", function () {
         expect(document.getElementById('history').textContent).toBe('2+40=42');
     });
 
+    it('should show 0 in history after clicking on clear entry at the beginning', function () {
+        application.init();
 
+        document.getElementById('clear-entry').click();
+        expect(document.getElementById('history').textContent).toBe('0');
+
+    });
 
 });
 

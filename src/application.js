@@ -17,7 +17,7 @@ function Application() {
     var MULTIPLY_SYMBOL = "*";
 
     var OPERATIONS = [PLUS_SYMBOL, MINUS_SYMBOL, DIVIDE_SYMBOL, MULTIPLY_SYMBOL];
-    var OPERATIONS_REG_EX =/\+|\-|\*|\//g;
+    var OPERATIONS_REG_EX = /\+|\-|\*|\//g;
 
     var history = "0";
     var result = "";
@@ -31,7 +31,7 @@ function Application() {
         return history.match(equalsRegExp);
     };
 
-    var getLastEntityInHistory = function () {
+    var getLastNumberInHistory = function () {
         return history.split(OPERATIONS_REG_EX).pop();
     };
 
@@ -59,7 +59,7 @@ function Application() {
                 history += digitStr;
             }
 
-            refreshDisplay(getLastEntityInHistory());
+            refreshDisplay(getLastNumberInHistory());
         }
     };
 
@@ -102,7 +102,7 @@ function Application() {
                 history = "0";
             }
             history += DECIMAL_POINT;
-            refreshDisplay(getLastEntityInHistory());
+            refreshDisplay(getLastNumberInHistory());
         };
     };
 
@@ -142,16 +142,21 @@ function Application() {
         };
     };
 
+    var doesHistoryOnlyContainANumber = function () {
+        return history === getLastNumberInHistory();
+    };
     var clearEntryOnClick = function () {
         document.getElementById('clear-entry').onclick = function () {
 
             if (isOperation(history[history.length - 1])) {
                 history = history.substring(0, history.length - 1)
+            } else if (doesHistoryOnlyContainANumber()) {
+                history = "0";
             } else {
-                history = history.replace(getLastEntityInHistory(), "");
+                history = history.replace(getLastNumberInHistory(), "");
             }
 
-            refreshDisplay(getLastEntityInHistory());
+            refreshDisplay(getLastNumberInHistory());
 
         };
     };
