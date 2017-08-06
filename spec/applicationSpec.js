@@ -215,11 +215,10 @@ describe("application", function () {
         document.getElementById('decimal-point').click();
         document.getElementById('3').click();
         document.getElementById('-').click();
-        document.getElementById('2').click();
         document.getElementById('decimal-point').click();
         document.getElementById('1').click();
 
-        expect(document.getElementById('history').textContent).toEqual('0.3-2.1');
+        expect(document.getElementById('history').textContent).toEqual('0.3-0.1');
 
     });
 
@@ -232,11 +231,10 @@ describe("application", function () {
 
         document.getElementById('3').click();
         document.getElementById('-').click();
-        document.getElementById('2').click();
         document.getElementById('decimal-point').click();
         document.getElementById('1').click();
 
-        expect(document.getElementById('display').textContent).toEqual('2.1');
+        expect(document.getElementById('display').textContent).toEqual('0.1');
     });
 
 

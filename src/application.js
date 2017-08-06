@@ -39,6 +39,13 @@ function Application() {
         return history.split(OPERATIONS_REG_EX).pop();
     };
 
+    var doesHistoryOnlyContainOneNumber = function () {
+        return history === getLastNumberInHistory();
+    };
+
+    var isLastIndexHistoryAnOperation = function () {
+        return isOperation(history[history.length - 1]);
+    };
     var getHistoryToDisplay = function () {
         if (history.length > MAX_CHARS_IN_HISTORY) {
             return "..." + history.slice(-MAX_CHARS_IN_HISTORY);
@@ -73,7 +80,7 @@ function Application() {
 
             if (doesHistoryContainEquals()) {
                 history = result;
-            } else if (isOperation(history[history.length - 1])) {
+            } else if (isLastIndexHistoryAnOperation()) {
                 history = history.substring(0, history.length - 1);
             }
 
@@ -102,8 +109,8 @@ function Application() {
 
     var displayDecimalPointOnClick = function () {
         document.getElementById('decimal-point').onclick = function () {
-            if (doesHistoryContainEquals() || history.length === 0) {
-                history = "0";
+            if (isLastIndexHistoryAnOperation()) {
+                history += "0";
             }
             history += DECIMAL_POINT;
             refreshDisplay(getLastNumberInHistory());
@@ -125,7 +132,7 @@ function Application() {
     var displayResultOnClick = function () {
         document.getElementById('equals').onclick = function () {
 
-            if (history === "0" || isOperation(history[history.length - 1])) {
+            if (history === "0" || isLastIndexHistoryAnOperation()) {
                 return;
             }
 
@@ -146,14 +153,10 @@ function Application() {
         };
     };
 
-    var doesHistoryOnlyContainOneNumber = function () {
-        return history === getLastNumberInHistory();
-    };
-
     var clearEntryOnClick = function () {
         document.getElementById('clear-entry').onclick = function () {
 
-            if (isOperation(history[history.length - 1])) {
+            if (isLastIndexHistoryAnOperation()) {
                 history = history.substring(0, history.length - 1)
             } else if (doesHistoryOnlyContainOneNumber() || doesHistoryContainEquals()) {
                 history = "0";
