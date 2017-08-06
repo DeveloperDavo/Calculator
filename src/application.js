@@ -10,6 +10,7 @@ function Application() {
 
     var DECIMAL_POINT = ".";
     var EQUALS_SYMBOL = "=";
+    var EQUALS_REG_EX = /\=/g;
 
     var PLUS_SYMBOL = "+";
     var MINUS_SYMBOL = "-";
@@ -19,6 +20,10 @@ function Application() {
     var OPERATIONS = [PLUS_SYMBOL, MINUS_SYMBOL, DIVIDE_SYMBOL, MULTIPLY_SYMBOL];
     var OPERATIONS_REG_EX = /\+|\-|\*|\//g;
 
+    /**
+     * All calculations and displaying the history depend on this string.
+     * @type {string}
+     */
     var history = "0";
     var result = "";
 
@@ -27,8 +32,7 @@ function Application() {
     };
 
     var doesHistoryContainEquals = function () {
-        var equalsRegExp = new RegExp(/\=/g);
-        return history.match(equalsRegExp);
+        return history.match(EQUALS_REG_EX);
     };
 
     var getLastNumberInHistory = function () {
@@ -161,7 +165,6 @@ function Application() {
 
         };
     };
-
 
     this.init = function () {
         refreshDisplay("0");
