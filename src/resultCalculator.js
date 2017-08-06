@@ -57,7 +57,7 @@ function ResultCalculator() {
 
         equation = squashMultiplicationsAndDivisions(equation);
 
-        return addAndSubtractResult(equation).toString();
+        return addAndSubtractResult(equation);
     };
 
 
