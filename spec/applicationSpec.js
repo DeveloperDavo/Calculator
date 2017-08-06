@@ -414,6 +414,22 @@ describe("application", function () {
 
     });
 
+    it('should show correct result in history after negative result', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('-').click();
+        document.getElementById('3').click();
+        document.getElementById('equals').click();
+        document.getElementById('+').click();
+        document.getElementById('2').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('history').textContent).toBe('-1+2=1');
+    });
+
+
+
 });
 
 function fixture(html) {

@@ -145,6 +145,7 @@ function Application() {
     var doesHistoryOnlyContainANumber = function () {
         return history === getLastNumberInHistory();
     };
+
     var clearEntryOnClick = function () {
         document.getElementById('clear-entry').onclick = function () {
 

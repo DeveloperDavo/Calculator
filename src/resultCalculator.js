@@ -7,6 +7,8 @@ var spliceAroundIndex = function (array, index) {
 
 
 function ResultCalculator() {
+    var NUMBER_REG_EX = /((\d+(\.?\d+)?))/g;
+
     /**
      * eg. Replaces [2, *, 3, +, 4] with [6, +, 4]
      */
@@ -47,13 +49,18 @@ function ResultCalculator() {
 
     this.calculateResult = function (history) {
         // add "|" either side of each number
-        var equationStr = history.replace(new RegExp(/((\d+(\.?\d+)?))/g), "|$1|");
+        var equationStr = history.replace(NUMBER_REG_EX, "|$1|");
 
         // convert equationStr to array
         var equation = equationStr.split("|");
 
-        // remove first entry because it is empty
-        equation.shift();
+        if (equation[0].length === 0) {
+            // remove first entry
+            equation.shift();
+        } else {
+            // prepend 0
+            equation.unshift("0");
+        }
 
         equation = squashMultiplicationsAndDivisions(equation);
 
