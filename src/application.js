@@ -47,23 +47,19 @@ function Application() {
         var operationsRegEx = new RegExp(/\+|\-|\*|\//g);
         return history.split(operationsRegEx).pop();
     };
-    var refreshMainDisplay = function (textToDisplay) {
-        document.getElementById('display').innerHTML = textToDisplay;
-    };
 
-    var refreshHistory = function () {
-        var historyInnerHtml = history;
-        if (historyInnerHtml.length === 0) {
-            historyInnerHtml = "0";
-        } else if (historyInnerHtml.length > MAX_CHARS_IN_HISTORY) {
-            var historyInnerHtml = "..." + historyInnerHtml.slice(-MAX_CHARS_IN_HISTORY);
+    var getHistoryToDisplay = function () {
+        if (history.length === 0) {
+            return "0";
+        } else if (history.length > MAX_CHARS_IN_HISTORY) {
+            return "..." + history.slice(-MAX_CHARS_IN_HISTORY);
         }
-        document.getElementById('history').innerHTML = historyInnerHtml;
+        return history;
     };
 
     var refreshDisplay = function (textToDisplay) {
-        refreshMainDisplay(textToDisplay);
-        refreshHistory();
+        document.getElementById('display').innerHTML = textToDisplay;
+        document.getElementById('history').innerHTML = getHistoryToDisplay();
     };
 
     // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
