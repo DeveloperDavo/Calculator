@@ -1,34 +1,3 @@
-    it('should show result with decimal when dividing', function () {
-        application.init();
-
-        document.getElementById('2').click();
-        document.getElementById('/').click();
-        document.getElementById('3').click();
-        document.getElementById('equals').click();
-
-        expect(document.getElementById('display').textContent).toBeCloseTo('0.67', 2);
-    });
-
-    it('should not display 0 as the first digit of a whole number', function () {
-        application.init();
-
-        document.getElementById('0').click();
-        document.getElementById('2').click();
-
-        expect(document.getElementById('display').textContent).toBe('2');
-    });
-
-    it('should calculate result when operation is clicked before a number', function () {
-        application.init();
-
-        document.getElementById('-').click();
-        document.getElementById('3').click();
-        document.getElementById('equals').click();
-
-        expect(document.getElementById('display').textContent).toBe('-3');
-
-    });
-
     it('should clear display after clicking clear all', function () {
         application.init();
 

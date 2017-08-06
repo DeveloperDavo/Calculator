@@ -317,6 +317,16 @@ describe("application", function () {
         expect(document.getElementById('history').textContent).toEqual('0');
     });
 
+    it('should prepend 0 to history when operation is clicked first', function () {
+        application.init();
+
+        document.getElementById('-').click();
+        document.getElementById('3').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('history').textContent).toBe('0-3=-3');
+
+    });
 });
 
 function fixture(html) {

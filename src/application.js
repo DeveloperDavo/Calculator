@@ -68,11 +68,12 @@ function Application() {
     // https://stackoverflow.com/questions/15860683/onclick-event-in-a-for-loop
     var displayOperation = function (operation) {
         return function () {
-            if (doesHistoryContainEquals()) {
-                history = result;
-            }
 
-            if (isOperation(history[history.length - 1])) {
+            if (history.length === 0) {
+                history += "0";
+            } else if (doesHistoryContainEquals()) {
+                history = result;
+            } else if (isOperation(history[history.length - 1])) {
                 history = history.substring(0, history.length - 1);
             }
 
