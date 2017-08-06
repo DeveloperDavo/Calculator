@@ -17,6 +17,7 @@ function Application() {
     var MULTIPLY_SYMBOL = "*";
 
     var OPERATIONS = [PLUS_SYMBOL, MINUS_SYMBOL, DIVIDE_SYMBOL, MULTIPLY_SYMBOL];
+    var OPERATIONS_REG_EX =/\+|\-|\*|\//g;
 
     var history = "0";
     var result = "";
@@ -31,8 +32,7 @@ function Application() {
     };
 
     var getLastEntityInHistory = function () {
-        var operationsRegEx = new RegExp(/\+|\-|\*|\//g);
-        return history.split(operationsRegEx).pop();
+        return history.split(OPERATIONS_REG_EX).pop();
     };
 
     var getHistoryToDisplay = function () {
@@ -147,6 +147,8 @@ function Application() {
 
             if (isOperation(history[history.length - 1])) {
                 history = history.substring(0, history.length - 1)
+            } else {
+                history = history.replace(getLastEntityInHistory(), "");
             }
 
             refreshDisplay(getLastEntityInHistory());
