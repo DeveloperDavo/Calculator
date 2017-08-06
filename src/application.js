@@ -1,20 +1,7 @@
 'use strict';
 
-var removeLeadingZeroes = function (multipleDigitStr) {
-    return Number(multipleDigitStr).toString();
-};
-
-var removeLastEntryIn = function (array) {
-    return array.slice(0, -1);
-};
-
 var convertNodeListToArray = function (nodeList) {
     return Array.prototype.slice.call(nodeList);
-};
-
-var spliceAroundIndex = function (array, index) {
-    array.splice(index + 1, 1);
-    array.splice(index - 1, 1);
 };
 
 function Application() {
