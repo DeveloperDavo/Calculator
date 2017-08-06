@@ -18,7 +18,7 @@ function Application() {
 
     var OPERATIONS = [PLUS_SYMBOL, MINUS_SYMBOL, DIVIDE_SYMBOL, MULTIPLY_SYMBOL];
 
-    var history = "";
+    var history = "0";
     var result = "";
 
     var isOperation = function (text) {
@@ -36,9 +36,7 @@ function Application() {
     };
 
     var getHistoryToDisplay = function () {
-        if (history.length === 0) {
-            return "0";
-        } else if (history.length > MAX_CHARS_IN_HISTORY) {
+        if (history.length > MAX_CHARS_IN_HISTORY) {
             return "..." + history.slice(-MAX_CHARS_IN_HISTORY);
         }
         return history;
@@ -53,7 +51,7 @@ function Application() {
     var displayCurrentNumber = function (digitStr) {
         return function () {
 
-            if (doesHistoryContainEquals()) {
+            if (history === "0" || doesHistoryContainEquals()) {
                 history = "";
             }
 
@@ -69,9 +67,7 @@ function Application() {
     var displayOperation = function (operation) {
         return function () {
 
-            if (history.length === 0) {
-                history += "0";
-            } else if (doesHistoryContainEquals()) {
+            if (doesHistoryContainEquals()) {
                 history = result;
             } else if (isOperation(history[history.length - 1])) {
                 history = history.substring(0, history.length - 1);
@@ -127,7 +123,7 @@ function Application() {
         var equalsElement = document.getElementById('equals');
         equalsElement.onclick = function () {
 
-            if (history.length === 0 || isOperation(history[history.length - 1])) {
+            if (history === "0" || isOperation(history[history.length - 1])) {
                 return;
             }
 
@@ -142,7 +138,7 @@ function Application() {
 
     var clearAllOnClick = function () {
         document.getElementById('all-clear').onclick = function () {
-            history = "";
+            history = "0";
             result = "";
             refreshDisplay("0");
         };
