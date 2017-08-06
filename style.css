@@ -2,9 +2,14 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: darkgrey;
+}
+
 table {
     margin: 10% auto;
     border: 1px solid black;
+    background-color: antiquewhite;
 }
 
 td {
