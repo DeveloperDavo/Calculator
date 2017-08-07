@@ -51,10 +51,12 @@ button {
 
 #display {
     font-size: 40px;
+    margin-right: 10px;
 }
 
 #history {
-    font-size: 18px;
+    font-size: 12px;
+    margin-right: 10px;
 }
 
 #equals {
