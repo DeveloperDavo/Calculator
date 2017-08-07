@@ -12,8 +12,7 @@ h5 {
 }
 
 table {
-    height: 250px;
-    margin: 5px 0;
+    margin: 5px auto;
 }
 
 td {
@@ -24,8 +23,8 @@ td {
 button {
     color: #fff;
     font-size: 16px;
-    width: 80%;
-    height: 80%;
+    width: 50px;
+    height: 40px;
     border-radius: 8px;
     border: none;
     background-color: #3a3a3a;
@@ -55,7 +54,6 @@ button:active {
     height: 410px;
     width: 300px;
     margin: 10% auto 0 auto;
-    padding: 15px;
     background-color: #dfd8d0;
     border: 2px solid #908b85;
     border-radius: 20px;
