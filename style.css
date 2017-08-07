@@ -62,14 +62,14 @@ button:active {
 }
 
 #display {
-    font-size: 40px;
+    font-size: 35px;
     margin-right: 10px;
 }
 
 #history {
     color: #8b8b7b;
     font-size: 12px;
-    margin-right: 10px;
+    margin-right: 14px;
 }
 
 #zero {
