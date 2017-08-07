@@ -37,7 +37,9 @@ button:active {
 }
 
 .display {
+    width: 85%;
     height: 65px;
+    margin: 0 auto;
     border: 2px solid #b4b39d;
     border-radius: 6px;
     background-color: #c3c2ab;
