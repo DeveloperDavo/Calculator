@@ -15,11 +15,6 @@ table {
     margin: 5px auto;
 }
 
-td {
-    text-align: center;
-    width: 70px;
-}
-
 button {
     color: #fff;
     font-size: 16px;
@@ -78,9 +73,9 @@ button:active {
 }
 
 #zero {
-    width: 90%;
+    /*TODO*/
 }
 
 #equals {
-    height: 90%;
+    /*TODO*/
 }
