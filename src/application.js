@@ -67,14 +67,15 @@ function Application() {
     var displayCurrentNumber = function (digitStr) {
         return function () {
 
+            if (document.getElementById('display').innerHTML.length >= MAX_CHARS_IN_DISPLAY) {
+                return;
+            }
+
             if (history === "0" || doesHistoryContainEquals()) {
                 history = "";
             }
 
-            if (document.getElementById('display').innerHTML.length < MAX_CHARS_IN_DISPLAY) {
-                history += digitStr;
-            }
-
+            history += digitStr;
             refreshDisplay(getLastNumberInHistory());
         }
     };
@@ -87,6 +88,8 @@ function Application() {
                 history = result;
             } else if (isLastIndexInHistoryAnOperation()) {
                 history = history.substring(0, history.length - 1);
+            } else if (isLastIndexInHistoryADecimalPoint()) {
+                history += "0";
             }
 
             history += operation;
@@ -141,6 +144,8 @@ function Application() {
 
             if (history === "0" || isLastIndexInHistoryAnOperation()) {
                 return;
+            } else if (isLastIndexInHistoryADecimalPoint()) {
+                history += "0";
             }
 
             result = new ResultCalculator().calculateResult(history);

@@ -459,7 +459,27 @@ describe("application", function () {
         expect(document.getElementById('history').textContent).toBe('1234567');
     });
 
+    it('should append 0 to history if decimal is clicked before an operation', function () {
+        application.init();
 
+        document.getElementById('1').click();
+        document.getElementById('decimal-point').click();
+        document.getElementById('+').click();
+
+        expect(document.getElementById('history').textContent).toBe('1.0+');
+    });
+
+    it('should append 0 to history if decimal is clicked before an equals', function () {
+        application.init();
+
+        document.getElementById('1').click();
+        document.getElementById('+').click();
+        document.getElementById('1').click();
+        document.getElementById('decimal-point').click();
+        document.getElementById('equals').click();
+
+        expect(document.getElementById('history').textContent).toBe('1+1.0=2');
+    });
 
 });
 
