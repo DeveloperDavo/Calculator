@@ -39,6 +39,11 @@ button {
     box-shadow: 0 3px 0 0 #222121, inset -1px -3px 10px 1px #515151;
 }
 
+button:active {
+    transform: translate(0px, 3px);
+    box-shadow: none;
+}
+
 .clear-operation {
     background-color: #a72d45;
     box-shadow: 0 3px 0 0 #671c2a;
