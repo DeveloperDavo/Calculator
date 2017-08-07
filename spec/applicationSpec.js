@@ -434,6 +434,16 @@ describe("application", function () {
         expect(document.getElementById('history').textContent).toBe('-1+2=1');
     });
 
+    it('should show consecutive decimal points once in history', function () {
+        application.init();
+
+        document.getElementById('2').click();
+        document.getElementById('decimal-point').click();
+        document.getElementById('decimal-point').click();
+
+        expect(document.getElementById('history').textContent).toBe('2.');
+    });
+
 
 });
 

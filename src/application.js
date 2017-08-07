@@ -43,9 +43,14 @@ function Application() {
         return history === getLastNumberInHistory();
     };
 
-    var isLastIndexHistoryAnOperation = function () {
+    var isLastIndexInHistoryADecimalPoint = function () {
+        return history[history.length - 1] === ".";
+    };
+
+    var isLastIndexInHistoryAnOperation = function () {
         return isOperation(history[history.length - 1]);
     };
+
     var getHistoryToDisplay = function () {
         if (history.length > MAX_CHARS_IN_HISTORY) {
             return "..." + history.slice(-MAX_CHARS_IN_HISTORY);
@@ -80,7 +85,7 @@ function Application() {
 
             if (doesHistoryContainEquals()) {
                 history = result;
-            } else if (isLastIndexHistoryAnOperation()) {
+            } else if (isLastIndexInHistoryAnOperation()) {
                 history = history.substring(0, history.length - 1);
             }
 
@@ -109,7 +114,9 @@ function Application() {
 
     var displayDecimalPointOnClick = function () {
         document.getElementById('decimal-point').onclick = function () {
-            if (isLastIndexHistoryAnOperation()) {
+            if (isLastIndexInHistoryADecimalPoint()) {
+                return;
+            } else if (isLastIndexInHistoryAnOperation()) {
                 history += "0";
             }
             history += DECIMAL_POINT;
@@ -132,7 +139,7 @@ function Application() {
     var displayResultOnClick = function () {
         document.getElementById('equals').onclick = function () {
 
-            if (history === "0" || isLastIndexHistoryAnOperation()) {
+            if (history === "0" || isLastIndexInHistoryAnOperation()) {
                 return;
             }
 
@@ -156,7 +163,7 @@ function Application() {
     var clearEntryOnClick = function () {
         document.getElementById('clear-entry').onclick = function () {
 
-            if (isLastIndexHistoryAnOperation()) {
+            if (isLastIndexInHistoryAnOperation()) {
                 history = history.substring(0, history.length - 1)
             } else if (doesHistoryOnlyContainOneNumber() || doesHistoryContainEquals()) {
                 history = "0";
