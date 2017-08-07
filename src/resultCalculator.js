@@ -35,8 +35,6 @@ function ResultCalculator() {
                 result += Number(equation[i + 1]);
             } else if (equation[i] === "-") {
                 result -= Number(equation[i + 1]);
-            } else {
-                // TODO: throw error
             }
         }
 
