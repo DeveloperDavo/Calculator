@@ -6,7 +6,7 @@ var convertNodeListToArray = function (nodeList) {
 
 function Application() {
     var MAX_CHARS_IN_HISTORY = 15;
-    var MAX_DIGITS_IN_DISPLAY = 10;
+    var MAX_DIGITS_IN_DISPLAY = 8;
 
     var DECIMAL_POINT = ".";
     var EQUALS_SYMBOL = "=";

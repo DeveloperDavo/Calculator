@@ -238,7 +238,7 @@ describe("application", function () {
     });
 
 
-    it('should limit input to 10 digits in display', function () {
+    it('should limit input to 8 digits in display', function () {
         application.init();
 
         document.getElementById('1').click();
@@ -253,7 +253,7 @@ describe("application", function () {
         document.getElementById('0').click();
         document.getElementById('1').click();
 
-        expect(document.getElementById('display').textContent).toEqual('1234567890');
+        expect(document.getElementById('display').textContent).toEqual('12345678');
 
     });
 
@@ -266,26 +266,24 @@ describe("application", function () {
         document.getElementById('4').click();
         document.getElementById('5').click();
         document.getElementById('+').click();
-        document.getElementById('1').click();
-        document.getElementById('2').click();
-        document.getElementById('3').click();
-        document.getElementById('4').click();
-        document.getElementById('5').click();
-        document.getElementById('6').click();
         document.getElementById('7').click();
         document.getElementById('8').click();
         document.getElementById('9').click();
         document.getElementById('0').click();
+        document.getElementById('-').click();
+        document.getElementById('2').click();
+        document.getElementById('3').click();
+        document.getElementById('4').click();
+        document.getElementById('/').click();
+        document.getElementById('6').click();
 
-        expect(document.getElementById('history').textContent).toEqual('...2345+1234567890');
+        expect(document.getElementById('history').textContent).toEqual('...2345+7890-234/6');
     });
 
-    it('should show results large than 9 digits rounded and in exponential notation in display', function () {
+    it('should show results large than 7 digits rounded and in exponential notation in display', function () {
         application.init();
 
         document.getElementById('9').click();
-        document.getElementById('0').click();
-        document.getElementById('0').click();
         document.getElementById('0').click();
         document.getElementById('0').click();
         document.getElementById('0').click();
@@ -300,11 +298,9 @@ describe("application", function () {
         document.getElementById('5').click();
         document.getElementById('6').click();
         document.getElementById('7').click();
-        document.getElementById('8').click();
-        document.getElementById('9').click();
         document.getElementById('equals').click();
 
-        expect(document.getElementById('display').textContent).toEqual('1e+9');
+        expect(document.getElementById('display').textContent).toEqual('1e+7');
     });
 
     it('should show 0 in history when equals is clicked first', function () {
