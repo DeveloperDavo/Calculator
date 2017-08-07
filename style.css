@@ -18,19 +18,14 @@ table {
     box-shadow: 7px 10px 34px 1px rgba(0, 0, 0, 0.68), inset -1px -6px 12px 0.1px #89847e;
 }
 
-tr {
-    margin-top: 15px;
-    margin-left: 15px;
-}
-
 td {
+    text-align: center;
     width: 70px;
 }
 
 button {
     color: #fff;
     font-size: 16px;
-    font-weight: bold;
     width: 80%;
     height: 80%;
     border-radius: 8px;
@@ -49,15 +44,8 @@ button:active {
     box-shadow: 0 3px 0 0 #671c2a;
 }
 
-.first-button-row {
-    /*margin-top: 15px;*/
-    /*margin-left: 15px;*/
-}
-
 .display {
-    width: 85%;
     height: 65px;
-    margin: 0 auto;
     border: 2px solid #b4b39d;
     border-radius: 6px;
     background-color: #c3c2ab;
