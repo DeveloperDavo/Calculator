@@ -7,3 +7,4 @@ The requirements for this project can be found at
 2. run `npm test` in the command line to run unit tests
 
 ## Screenshots
+<img src="screenshots/Screen Shot 2017-08-07 at 14.32.18.png" width="400">
