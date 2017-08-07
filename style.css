@@ -16,16 +16,23 @@ h5 {
 }
 
 table {
-    margin: 5px auto;
+    margin: 15px 19px;
+}
+
+td {
+    padding: 0;
 }
 
 button {
     color: #fff;
     font-size: 16px;
+    font-family: inherit;
     width: 50px;
     height: 40px;
+    margin: 0 16px 10px 0;
     border-radius: 8px;
     border: none;
+    padding: 3px 6px;
     background-color: #3a3a3a;
     box-shadow: 0 3px 0 0 #222121, inset -1px -3px 10px 1px #515151;
 }
@@ -41,14 +48,14 @@ button:active {
 }
 
 .display {
-    width: 85%;
+    /* width: 260px; */
     height: 65px;
-    margin: 0 auto;
+    margin: 0 21px 0 20px;
     border: 2px solid #b4b39d;
     border-radius: 6px;
     background-color: #c3c2ab;
     text-align: right;
-    padding: 5px 5px;
+    padding: 10px 0;
 }
 
 #calculator {
