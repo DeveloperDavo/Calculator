@@ -18,24 +18,35 @@ table {
     box-shadow: 7px 10px 34px 1px rgba(0, 0, 0, 0.68), inset -1px -6px 12px 0.1px #89847e;
 }
 
+tr {
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
 td {
-    width: 60px;
+    width: 70px;
 }
 
 button {
-    width: 100%;
-    padding: 10px;
-    font-size: 20px;
-    background-color: black;
-    color: white;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    width: 80%;
+    height: 80%;
+    border-radius: 8px;
+    border: none;
+    background-color: #3a3a3a;
+    box-shadow: 0 3px 0 0 #222121, inset -1px -3px 10px 1px #515151;
 }
 
 .clear-operation {
-    background-color: crimson;
+    background-color: #a72d45;
+    box-shadow: 0 3px 0 0 #671c2a;
 }
 
 .first-button-row {
-    margin-top: 10px;
+    /*margin-top: 15px;*/
+    /*margin-left: 15px;*/
 }
 
 .display {
@@ -59,6 +70,10 @@ button {
     margin-right: 10px;
 }
 
+#zero {
+    width: 90%;
+}
+
 #equals {
-    height: 98px;
+    height: 90%;
 }
