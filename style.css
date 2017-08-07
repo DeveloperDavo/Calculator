@@ -48,7 +48,6 @@ button:active {
 }
 
 .display {
-    /* width: 260px; */
     height: 65px;
     margin: 0 21px 0 20px;
     border: 2px solid #b4b39d;
@@ -84,5 +83,5 @@ button:active {
 }
 
 #equals {
-    /*TODO*/
+    height: 94px;
 }
