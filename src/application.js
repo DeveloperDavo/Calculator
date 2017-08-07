@@ -6,7 +6,7 @@ var convertNodeListToArray = function (nodeList) {
 
 function Application() {
     var MAX_CHARS_IN_HISTORY = 15;
-    var MAX_DIGITS_IN_DISPLAY = 8;
+    var MAX_CHARS_IN_DISPLAY = 8;
 
     var DECIMAL_POINT = ".";
     var EQUALS_SYMBOL = "=";
@@ -71,7 +71,7 @@ function Application() {
                 history = "";
             }
 
-            if (document.getElementById('display').innerHTML.length < MAX_DIGITS_IN_DISPLAY) {
+            if (document.getElementById('display').innerHTML.length < MAX_CHARS_IN_DISPLAY) {
                 history += digitStr;
             }
 
@@ -114,7 +114,7 @@ function Application() {
 
     var displayDecimalPointOnClick = function () {
         document.getElementById('decimal-point').onclick = function () {
-            if (isLastIndexInHistoryADecimalPoint()) {
+            if (isLastIndexInHistoryADecimalPoint() || document.getElementById('display').innerHTML.length >= MAX_CHARS_IN_DISPLAY - 1) {
                 return;
             } else if (isLastIndexInHistoryAnOperation()) {
                 history += "0";
@@ -125,7 +125,7 @@ function Application() {
     };
 
     var getResultToDisplay = function () {
-        if (result.toString().length < MAX_DIGITS_IN_DISPLAY) {
+        if (result.toString().length < MAX_CHARS_IN_DISPLAY) {
             return result;
         }
 

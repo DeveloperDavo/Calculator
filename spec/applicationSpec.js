@@ -444,6 +444,22 @@ describe("application", function () {
         expect(document.getElementById('history').textContent).toBe('2.');
     });
 
+    it('should not allow a decimal point as the last if chars in display is one less than max', function () {
+        application.init();
+
+        document.getElementById('1').click();
+        document.getElementById('2').click();
+        document.getElementById('3').click();
+        document.getElementById('4').click();
+        document.getElementById('5').click();
+        document.getElementById('6').click();
+        document.getElementById('7').click();
+        document.getElementById('decimal-point').click();
+
+        expect(document.getElementById('history').textContent).toBe('1234567');
+    });
+
+
 
 });
 
